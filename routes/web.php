@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(PagesController::class)->group(function() {
+    Route::get('/', 'home')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/proker', 'proker')->name('proker');
+    Route::get('/gallery', 'gallery')->name('gallery');
+    Route::get('/contact-us', 'contactUs')->name('contactUs');
 });
 
 Route::get('/dashboard', function () {
