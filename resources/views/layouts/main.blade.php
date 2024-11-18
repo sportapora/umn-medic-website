@@ -31,7 +31,7 @@
     <header>
         @include('components.main-components.navbar')
     </header>
-    <main class="max-w-screen-2xl mx-10 md:mx-16 lg:mx-auto mt-10">
+    <main class="mt-10">
         @yield('content')
     </main>
 
