@@ -1,4 +1,5 @@
 <x-guest-layout>
+    <x-slot name="title">Dashboard</x-slot>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -30,6 +31,10 @@
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
+        </div>
+
+        <div class="block mt-4">
+            <p class="text-sm">Don't have an account? Register <a href="{{route('register')}}" class="text-blue-500 hover:underline">here.</a></p>
         </div>
 
         <div class="flex items-center justify-end mt-4">
