@@ -15,11 +15,15 @@
                     Universitas Multimedia Nusantara.
                 </p>
 
-                <div class="flex flex-row">
-                    <button type="button" href=""
-                            class="focus:outline-none text-white bg-medic-primary hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                <div class="flex flex-row gap-4">
+                    <a type="button" href="{{route('contactUs')}}"
+                            class="focus:outline-none text-white bg-medic-primary hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                         Contact Us
-                    </button>
+                    </a>
+                    <a type="button" href="{{route('about')}}"
+                            class="focus:outline-none border border-medic-primary text-medic-primary bg-white focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                        About Us
+                    </a>
                 </div>
             </div>
             <img src="{{ asset('assets/images/medi-ical.png') }}" class="" alt="UMN Medical Center Mascot"/>
