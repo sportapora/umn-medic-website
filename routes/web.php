@@ -3,6 +3,7 @@
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactUsController;
 
 Route::controller(PagesController::class)->group(function() {
     Route::get('/', 'home')->name('home');
@@ -10,6 +11,7 @@ Route::controller(PagesController::class)->group(function() {
     Route::get('/proker', 'proker')->name('proker');
     Route::get('/gallery', 'gallery')->name('gallery');
     Route::get('/contact-us', 'contactUs')->name('contactUs');
+    Route::get('/contact-us-data', [ContactUsController::class, 'fetchContactUs'])->name('contactUs.data');
 });
 
 Route::get('/dashboard', function () {

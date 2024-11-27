@@ -11,12 +11,22 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
+
     if (calendarEl) {
         const calendar = new Calendar(calendarEl, {
-            plugins: [dayGridPlugin, interactionPlugin],
+            plugins: [dayGridPlugin],
             initialView: 'dayGridMonth',
-            events: '/path-to-your-events-endpoint', // Add an API or array of events here
+            events: '/contact-us-data',
+            eventContent: function (info) {
+                return {
+                    html: `
+                        <b>${info.event.title}</b><br>
+                        <i>Status: ${info.event.extendedProps.status}</i>
+                    `,
+                };
+            },
         });
+
         calendar.render();
     }
 });
