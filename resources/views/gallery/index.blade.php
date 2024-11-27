@@ -1,4 +1,4 @@
-@extends('layouts.main', ['title' => 'Gallery'])
+@extends('layouts.app', ['title' => 'Gallery'])
 
 @section('content')
     gallery

@@ -17,6 +17,8 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "flowbite": "^2.5.2"
+        "@alpinejs/persist": "^3.14.3",
+        "flowbite": "^2.5.2",
+        "jsvectormap": "^1.6.0"
     }
 }
