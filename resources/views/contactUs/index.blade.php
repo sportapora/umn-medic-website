@@ -1,4 +1,4 @@
-@extends('layouts.main', ['title' => 'Hubungi Kami'])
+@extends('layouts.app', ['title' => 'Hubungi Kami'])
 
 @section('content')
     <div class="flex custom-container justify-start">
