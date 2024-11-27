@@ -9,8 +9,9 @@
                 <p class="text-5xl font-bold text-medic-primary" >UMN MEDICAL CENTER</p>
                 <p class="text-wrap text-xl" >Lorem ipsum dolor sit amet consectetur. Urna massa mauris tincidunt gravida sed neque. Urna mattis et duis et ut vivamus ac. In malesuada commodo pulvinar</p>
 
-                <div class="flex flex-row">
-                    <button type="button" href="" class="focus:outline-none text-white bg-medic-primary hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Contact Us</button>
+                <div class="flex flex-row gap-5">
+                    <a  href="{{route("contactUs")}}" class="focus:outline-none text-white bg-medic-primary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Contact Us</a>
+                    <a  href="{{route("about")}}" class="focus:outline-none text-medic-primary bg-white border border-medic-primary focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">About Us</a>
                 </div>
             </div>
             <img src="{{ asset('assets/images/medi-ical.png') }}" class="" alt="UMN Medical Center Mascot" />
