@@ -7,7 +7,7 @@
             <div class="flex flex-col gap-3 justify-center w-1/2">
                 <p class="text-5xl font-bold text-medic-primary-dark">Welcome to</p>
                 <p class="text-5xl font-bold text-medic-primary">UMN MEDICAL CENTER</p>
-                <p class="text-wrap text-xl">
+                <p class="text-wrap text-xl text-justify">
                     UMN Medical Center merupakan Lembaga Semi Otonom di bawah pengawasan Badan Eksekutif Mahasiswa yang
                     bergerak di bidang kesehatan. Mulai beroperasi sejak tahun 2014, dan telah resmi berdiri pada tahun
                     2015, UMN Medical Center kini sudah memasuki generasi kesepuluh, menunjukkan eksistensinya yang
@@ -38,7 +38,7 @@
             <p class="text-medic-primary-dark text-3xl font-bold mb-8">
                 ABOUT <span class="text-medic-primary">UMN MEDICAL CENTER</span>
             </p>
-            <p class="text-balance text-xl">
+            <p class="text-balance text-xl text-justify">
                 UMN Medical Center berorientasi pada pelayanan kesehatan dengan kewajiban untuk memberikan pertolongan
                 pertama, obat-obatan, serta edukasi kepada seluruh civitas akademika Universitas Multimedia Nusantara
                 melalui kampanye-kampanye interaktif dan seminar mengenai kesehatan. Selain memiliki kegiatan yang
