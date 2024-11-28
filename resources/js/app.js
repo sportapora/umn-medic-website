@@ -2,12 +2,15 @@ import './bootstrap';
 import 'flowbite';
 import "../css/satoshi.css";
 import "../css/app.css";
-
-// full calendar
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import persist from "@alpinejs/persist";
+import Alpine from 'alpinejs';
 
+Alpine.plugin(persist);
+window.Alpine = Alpine;
+Alpine.start();
 
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
@@ -20,25 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
             eventContent: function (info) {
                 return {
                     html: `
-                        <b>${info.event.title}</b><br>
-                        <i>Status: ${info.event.extendedProps.status}</i>
+                        <p class="font-bold">${info.event.title}</p><br>
+                        <i>Status: <span class="font-semibold">${info.event.extendedProps.status}</span></i>
+                        <p>${info.event.extendedProps.nama}</p>
+                        <p>${info.event.extendedProps.waktu}</p>
+                        <p>${info.event.extendedProps.lokasi}</p>
                     `,
                 };
-            },
-            eventClick: function (info) {
-                const title = info.event.title;
-                const startDate = info.event.start.toISOString().split('T')[0];
-                const endDate = info.event.end ? info.event.end.toISOString().split('T')[0] : startDate;
-                const status = info.event.extendedProps.status;
-                const description = info.event.extendedProps.description || 'Tidak ada deskripsi';
-
-                document.getElementById('modalEventTitle').textContent = title;
-                document.getElementById('modalEventDate').textContent = `${startDate} - ${endDate}`;
-                document.getElementById('modalEventStatus').textContent = status;
-                document.getElementById('modalEventDescription').textContent = description;
-
-                const modal = new window.Flowbite.Modal(document.getElementById('default-modal'));
-                modal.show();
             },
             events: function (fetchInfo, successCallback, failureCallback) {
                 fetch('/contact-us-data')
@@ -70,11 +61,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 // end fullcalendar
-
-import persist from "@alpinejs/persist";
-
-import Alpine from 'alpinejs';
-
-Alpine.plugin(persist);
-window.Alpine = Alpine;
-Alpine.start();

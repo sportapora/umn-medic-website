@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class contactUsTableSeeder extends Seeder
+class ContactUsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -50,7 +50,7 @@ class contactUsTableSeeder extends Seeder
                 'waktu_selesai' => '12:00:00',
                 'jumlah_tim_medis' => 3,
                 'keterangan' => 'Need medical supplies.',
-                'status' => false, 
+                'status' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

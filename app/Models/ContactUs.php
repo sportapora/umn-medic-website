@@ -11,11 +11,12 @@ class ContactUs extends Model
 
     protected $table = 'contactUs';
 
-    protected $fillable = [
-        'nama_acara', 
-        'tanggal_acara',
-        'status'
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
     ];
+
     public function getStatusAttribute($value)
     {
         switch ($value) {
