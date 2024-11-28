@@ -11,12 +11,61 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
+
     if (calendarEl) {
         const calendar = new Calendar(calendarEl, {
             plugins: [dayGridPlugin, interactionPlugin],
             initialView: 'dayGridMonth',
-            events: '/path-to-your-events-endpoint', // Add an API or array of events here
+            events: '/contact-us-data',
+            eventContent: function (info) {
+                return {
+                    html: `
+                        <b>${info.event.title}</b><br>
+                        <i>Status: ${info.event.extendedProps.status}</i>
+                    `,
+                };
+            },
+            eventClick: function (info) {
+                const title = info.event.title;
+                const startDate = info.event.start.toISOString().split('T')[0];
+                const endDate = info.event.end ? info.event.end.toISOString().split('T')[0] : startDate;
+                const status = info.event.extendedProps.status;
+                const description = info.event.extendedProps.description || 'Tidak ada deskripsi';
+
+                document.getElementById('modalEventTitle').textContent = title;
+                document.getElementById('modalEventDate').textContent = `${startDate} - ${endDate}`;
+                document.getElementById('modalEventStatus').textContent = status;
+                document.getElementById('modalEventDescription').textContent = description;
+
+                const modal = new window.Flowbite.Modal(document.getElementById('default-modal'));
+                modal.show();
+            },
+            events: function (fetchInfo, successCallback, failureCallback) {
+                fetch('/contact-us-data')
+                    .then(response => response.json())
+                    .then(events => {
+                        const mappedEvents = events.map(event => {
+                            let eventColor = '';
+
+                            if (event.status === 'Pending') {
+                                eventColor = 'gray';
+                            } else if (event.status === 'Approve') {
+                                eventColor = 'green';
+                            } else if (event.status === 'Decline') {
+                                eventColor = 'red';
+                            }
+
+                            return {
+                                ...event,
+                                color: eventColor
+                            };
+                        });
+
+                        successCallback(mappedEvents);
+                    });
+            }
         });
+
         calendar.render();
     }
 });
