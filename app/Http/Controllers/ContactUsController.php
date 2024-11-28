@@ -13,7 +13,7 @@ class ContactUsController extends Controller
             return[
                 'title' => $contact->nama_acara,
                 'start' => $contact->tanggal_acara,
-                'status' => $contact->status ? 'Approve' : 'Pending',
+                'status' => $contact->status,
             ];
         });
 

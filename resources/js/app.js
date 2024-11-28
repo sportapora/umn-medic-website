@@ -25,6 +25,44 @@ document.addEventListener('DOMContentLoaded', function () {
                     `,
                 };
             },
+            eventClick: function(info) {
+                const title = info.event.title;
+                const startDate = info.event.start.toISOString().split('T')[0];
+                const status = info.event.extendedProps.status;
+                const description = info.event.extendedProps.description || 'Tidak ada deskripsi';
+
+                document.getElementById('modalEventTitle').textContent = title;
+                document.getElementById('modalEventDate').textContent = startDate;
+                document.getElementById('modalEventStatus').textContent = status;
+                document.getElementById('modalEventDescription').textContent = description;
+
+                const modal = new window.Flowbite.Modal(document.getElementById('eventDetailModal'));
+                modal.show();
+            },
+            events: function(fetchInfo, successCallback, failureCallback) {
+                fetch('/contact-us-data')
+                    .then(response => response.json())
+                    .then(events => {
+                        const mappedEvents = events.map(event => {
+                            let eventColor = '';
+
+                            if (event.status === 'Pending') {
+                                eventColor = 'gray';
+                            } else if (event.status === 'Approve') {
+                                eventColor = 'green';
+                            } else if (event.status === 'Decline') {
+                                eventColor = 'red';
+                            }
+
+                            return {
+                                ...event,
+                                color: eventColor  
+                            };
+                        });
+
+                        successCallback(mappedEvents);
+                    });
+            }
         });
 
         calendar.render();

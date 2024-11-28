@@ -16,4 +16,17 @@ class ContactUs extends Model
         'tanggal_acara',
         'status'
     ];
+    public function getStatusAttribute($value)
+    {
+        switch ($value) {
+            case 1:
+                return 'Approve';
+            case 2:
+                return 'Decline';
+            case 0:
+                return 'Pending';
+            default:
+                return 'Pending';
+        }
+    }
 }
