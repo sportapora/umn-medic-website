@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('contactUs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('nim');
-            $table->string('nomor_telepon');
-            $table->string('id_line')->nullable();
-            $table->string('tipe_pengajuan');
-            $table->string('nama_organisasi');
-            $table->string('jabatan');
-            $table->string('nama_acara');
+            $table->string('nama_lengkap', 50);
+            $table->string('nim', 15);
+            $table->string('nomor_telepon', 13);
+            $table->string('id_line', 20)->nullable();
+            $table->string('tipe_pengajuan', 20);
+            $table->string('nama_organisasi', 50);
+            $table->string('jabatan', 20);
+            $table->string('nama_acara', 50);
             $table->text('deskripsi_acara');
             $table->string('lokasi_acara');
             $table->date('tanggal_acara');
