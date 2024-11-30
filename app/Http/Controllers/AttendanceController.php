@@ -21,12 +21,7 @@ class AttendanceController extends Controller
             $user = User::find($attendance->user_id);
             $attendance->user = $user;
 
-            $attendance->shift_time = Carbon::parse($attendance->shift_time);
-            $attendance->absen_time = Carbon::parse($attendance->created_at);
-
-            $attendance->is_late = $attendance->absen_time->subMinutes(15)->greaterThan($attendance->shift_time);
-
-            $attendance->shift_time = $attendance->shift_time->format('H:i');
+            $attendance->shift_time = Carbon::parse($attendance->shift_time)->format('H:i');
             $attendance->absen_time = Carbon::parse($attendance->created_at)->format('H:i');
 
             $attendance->photo_url = Storage::url($attendance->photo);
@@ -47,11 +42,13 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
+        $is_late = Carbon::now()->subMinutes(15)->greaterThan(Carbon::parse($request->shift_time));
         $path = $request->file('photo')->storePublicly('absen', 'public');
 
         $attendance = new Attendance();
         $attendance->user_id = $request->user_id;
         $attendance->shift_time = $request->shift_time;
+        $attendance->status = $is_late ? 'late' : 'safe';
         $attendance->photo = $path;
         $attendance->save();
 

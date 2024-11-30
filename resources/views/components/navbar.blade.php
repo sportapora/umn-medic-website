@@ -39,6 +39,14 @@
                         Gallery
                     </a>
                 </li>
+                @auth
+                <li>
+                    <a href="{{route('attendance.index')}}"
+                       class="block py-2 px-3  {{request()->routeIs('attendance.*') ? 'bg-medic-primary md:text-medic-primary text-white' : 'text-gray-900 hover:text-medic-primary'}}  rounded md:bg-transparent  md:p-0">
+                        Attendance
+                    </a>
+                </li>
+                @endauth
                 <li class="mt-4 md:mt-0">
                     <a href="{{route('contactUs')}}"
                         class="text-white mt-2 md:mt-0 bg-medic-primary focus:ring-4 hover:bg-green-400 focus:ring-green-300 font-medium rounded-lg px-5 py-2.5 focus:outline-none">Contact

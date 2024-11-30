@@ -8,7 +8,7 @@
 
 <table border='1'>
     <tr>
-        <th>User ID</th>
+        <th>NIM</th>
         <th>Nama</th>
         <th>Shift</th>
         <th>Absen</th>
@@ -16,10 +16,10 @@
     </tr>
     @foreach($attendances as $attendance)
     <tr>
-        <td>{{$attendance->user_id}}</td>
+        <td>{{$attendance->user->nim}}</td>
         <td>{{$attendance->user->name}}</td>
         <td>{{$attendance->shift_time}}</td>
-        <td style="color: {{$attendance->is_late ? 'red' : 'black'}};">{{$attendance->absen_time}}</td>
+        <td style="color: {{$attendance->status = 'late' ? 'red' : 'black'}};">{{$attendance->absen_time}}</td>
         <td><img src="{{asset($attendance->photo_url)}}" style="padding: 10px; max-width: 200px; max-height: 200px;"/></td>
     </tr>
     @endforeach
