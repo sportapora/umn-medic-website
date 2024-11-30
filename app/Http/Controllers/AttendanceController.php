@@ -42,12 +42,24 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'photo' => 'required|image'
+        ]);
+
+        $current_time = Carbon::now();
+        $shift_time = Carbon::parse($request->shift_time);
+
+        $early = $shift_time->subMinutes(15)->greaterThan($current_time);
+        if($early){
+            return back()->withErrors(['shift_time' => 'Too early to submit attendance for this shift.']);
+        }
+
         $is_late = Carbon::now()->subMinutes(15)->greaterThan(Carbon::parse($request->shift_time));
         $path = $request->file('photo')->storePublicly('absen', 'public');
 
         $attendance = new Attendance();
         $attendance->user_id = $request->user_id;
-        $attendance->shift_time = $request->shift_time;
+        $attendance->shift_time = Carbon::parse($request->shift_time);
         $attendance->status = $is_late ? 'late' : 'safe';
         $attendance->photo = $path;
         $attendance->save();
