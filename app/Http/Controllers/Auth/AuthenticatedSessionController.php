@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +25,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        $user = User::where('email', $request->get('email'))->first();
 
-        $request->session()->regenerate();
+        if ($user->is_verified) {
 
-        return redirect()->intended(route('dashboard', absolute: false));
+
+            $request->authenticate();
+
+            $request->session()->regenerate();
+
+            return redirect()->intended(route('dashboard', absolute: false));
+        } else {
+            return back()->with('error', 'Anda belum terverifikasi oleh Admin!');
+        }
     }
 
     /**
