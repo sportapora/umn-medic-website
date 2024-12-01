@@ -7,17 +7,18 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShiftController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\GalleryController;
 
 Route::middleware('throttle:global')->group(function () {
     Route::controller(PagesController::class)->group(function () {
         Route::get('/', 'home')->name('home');
         Route::get('/about', 'about')->name('about');
         Route::get('/proker', 'proker')->name('proker');
-        Route::get('/gallery', 'gallery')->name('gallery');
         Route::get('/contact-us', 'contactUs')->name('contactUs');
     });
 
     Route::get('/contact-us-data', [ContactUsController::class, 'fetchContactUs'])->name('contactUs.data');
+    Route::get('/gallery/{category?}', [GalleryController::class, 'index'])->name('gallery');
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
