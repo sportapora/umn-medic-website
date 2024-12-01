@@ -2,13 +2,10 @@
 
 @section('content')
 <div class="container mx-auto p-6">
-    <!-- Header -->
     <h1 class="text-center text-4xl font-bold mb-6 text-medic-primary">Rekap Absensi</h1>
-
-    <!-- Button & Filter -->
     <div class="flex justify-between items-center mb-6">
         <a href="/attendance/create" class="px-4 py-2 bg-medic-primary text-white font-semibold rounded hover:bg-green-700 transition">
-            Absen Sekarang
+            Absen
         </a>
         
         <form id="filter-form" method="GET" action="/attendance" class="flex items-center space-x-4">
@@ -17,14 +14,11 @@
                 type="date" 
                 id="date" 
                 name="date" 
-                value="{{$date}}" 
-                class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-medic-primary focus:border focus:border-medic-primary"
-                onchange="document.getElementById('filter-form').submit();" 
-            />
+                value="{{$date}}"
+                class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-medic-primary focus:border focus:border-medic-primary" 
+                onchange="document.getElementById('filter-form').submit();"/>
         </form>
     </div>
-
-    <!-- Table -->
     <div class="overflow-x-auto shadow rounded-lg">
         <table class="min-w-full bg-white border border-gray-200">
             <thead class="bg-gray-100 border-b">
@@ -43,10 +37,10 @@
                     <td class="px-4 py-2 text-sm text-gray-800">{{$attendance->user->name}}</td>
                     <td class="px-4 py-2 text-sm text-gray-800">{{$attendance->shift_time}}</td>
                     <td class="px-4 py-2 text-sm font-semibold {{ $attendance->status == 'late' ? 'text-red-500' : 'text-green-500' }}">
-                        {{$attendance->absen_time}}
+                            {{$attendance->absen_time}}
                     </td>
                     <td class="px-4 py-2">
-                        <img src="{{ asset($attendance->photo_url) }}" alt="Bukti Absensi" class="w-20 h-20 object-cover rounded shadow" />
+                        <img src="{{asset($attendance->photo_url)}}" alt="Bukti Absensi" style="padding: 10px; max-width: 200px; max-height: 200px;"/>
                     </td>
                 </tr>
                 @endforeach
@@ -54,4 +48,5 @@
         </table>
     </div>
 </div>
+
 @endsection
