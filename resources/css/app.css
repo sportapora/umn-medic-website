@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior: smooth;
+}
+
 @layer base {
     body {
         @apply relative z-1 font-satoshi text-base font-normal text-body;
