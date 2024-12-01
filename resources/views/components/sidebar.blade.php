@@ -1,9 +1,8 @@
 <aside
     :class="sidebarToggle ? 'translate-x-0' : '-translate-x-full'"
-    class="absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-medic-secondary duration-300 ease-linear lg:static lg:translate-x-0"
+    class="absolute left-0 top-0 z-99 flex h-screen w-72.5 flex-col overflow-y-hidden bg-medic-secondary duration-300 ease-linear lg:static lg:translate-x-0"
     @click.outside="sidebarToggle = false"
 >
-    <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <a href="{{route('dashboard')}}">
             <img src="{{asset('assets/logos/medic-logo.png')}}" alt="Logo"/>
@@ -28,24 +27,21 @@
             </svg>
         </button>
     </div>
-    <!-- SIDEBAR HEADER -->
 
     <div
         class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear"
     >
-        <!-- Sidebar Menu -->
         <nav
             class="mt-5 px-4 py-4 lg:mt-9 lg:px-6"
             x-data="{selected: $persist('Dashboard')}"
         >
-            <!-- Menu Group -->
             <div>
                 <h3 class="mb-4 ml-4 text-sm font-medium text-medic-primary-dark">MENU</h3>
 
                 <ul class="mb-6 flex flex-col gap-1.5">
                     <li>
                         <a
-                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-graydark {{request()->routeIs('dashboard') ? 'bg-graydark text-white' : 'text-graydark'}}"
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('dashboard') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
                             href="{{route('dashboard')}}"
                         >
                             <svg
@@ -77,13 +73,10 @@
                             Dashboard
                         </a>
                     </li>
-                    <!-- Menu Item Calendar -->
                     <li>
                         <a
-                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-graydark hover:text-white duration-300 ease-in-out hover:bg-graydark"
-                            href="calendar.html"
-                            @click="selected = (selected === 'Calendar' ? '':'Calendar')"
-                            :class="{ 'bg-graydark"
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
+                            href=""
                         >
                             <svg
                                 class="fill-current"
@@ -99,15 +92,27 @@
                                 />
                             </svg>
 
-                            Calendar
+                            Pengajuan Jasa
                         </a>
                     </li>
-                    <!-- Menu Item Calendar -->
-
-                    <!-- Menu Item Profile -->
                     <li>
                         <a
-                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-graydark {{request()->routeIs('') ? 'bg-graydark text-white' : 'text-graydark'}}"
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('shifts.*') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
+                            href="{{route('shifts.index')}}"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round" class="lucide lucide-clock-9">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 7.5 12"/>
+                            </svg>
+
+                            Shift
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
                             href=""
                         >
                             <svg
@@ -134,6 +139,5 @@
                 </ul>
             </div>
         </nav>
-        <!-- Sidebar Menu -->
     </div>
 </aside>

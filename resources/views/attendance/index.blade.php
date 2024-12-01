@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container mx-auto p-6">
-
     <h1 class="text-center text-4xl font-bold mb-6 text-medic-primary">Rekap Absensi</h1>
     <div class="flex justify-between items-center mb-6">
         <a href="/attendance/create" class="px-4 py-2 bg-medic-primary text-white font-semibold rounded hover:bg-green-700 transition">
@@ -20,7 +19,6 @@
                 onchange="document.getElementById('filter-form').submit();"/>
         </form>
     </div>
-        
     <div class="overflow-x-auto shadow rounded-lg">
         <table class="min-w-full bg-white border border-gray-200">
             <thead class="bg-gray-100 border-b">

@@ -8,6 +8,15 @@
             Sign In to UMN Medical Center
         </h2>
 
+        @if(session('error'))
+            <div x-data="{ show: true }"
+                 x-show="show"
+                 x-transition
+                 x-init="setTimeout(() => show = false, 2000)" class="bg-red-100 text-red-700 p-4 rounded mb-6">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <form method="post" action="{{route('login')}}">
             @csrf
             <div class="mb-4">

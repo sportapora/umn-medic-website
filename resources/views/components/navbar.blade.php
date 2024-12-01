@@ -46,13 +46,23 @@
                         Attendance
                     </a>
                 </li>
+                    <li>
+                        <a href=""
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit()"
+                           class="block py-2 px-3  {{request()->routeIs('login') ? 'bg-medic-primary md:text-medic-primary text-white' : 'text-gray-900 hover:text-medic-primary'}}  rounded md:bg-transparent  md:p-0">
+                            Logout
+                        </a>
+                        <form action="{{route('logout')}}" method="post" id="logout-form">@csrf</form>
+                    </li>
                 @endauth
+                @guest
                 <li>
                     <a href="{{route('login')}}"
                        class="block py-2 px-3  {{request()->routeIs('login') ? 'bg-medic-primary md:text-medic-primary text-white' : 'text-gray-900 hover:text-medic-primary'}}  rounded md:bg-transparent  md:p-0">
                         Login
                     </a>
                 </li>
+                @endguest
                 <li class="mt-4 md:mt-0">
                     <a href="{{route('contactUs')}}"
                         class="text-white mt-2 md:mt-0 bg-medic-primary focus:ring-4 hover:bg-green-800 focus:ring-green-800 font-medium rounded-lg px-5 py-2.5 focus:outline-none">Contact

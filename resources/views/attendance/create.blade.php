@@ -3,7 +3,6 @@
 @section('content')
 <div class="container mx-auto p-6">
     <h1 class="text-center text-4xl font-bold mb-6 text-medic-primary">Absen</h1>
-    
     @if ($errors->any())
         <div class="alert alert-danger text-center mb-2">
             <ul>
@@ -67,7 +66,10 @@
                 } else {
                     submitButton.disabled = false;
                 }
+
     }
+    window.onload = checkShiftTime;
 </script>
 
 @endsection
+
