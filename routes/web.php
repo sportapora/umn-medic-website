@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\VerifyController;
 
 Route::controller(PagesController::class)->group(function() {
     Route::get('/', 'home')->name('home');
@@ -22,6 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/verify', [VerifyController::class,'index'])->name('show.user');
+    Route::put('/verify', [VerifyController::class,'verify'])->name('verify.user');
+    Route::put('/decline', [VerifyController::class,'decline'])->name('decline.user');
 });
+
+
 
 require __DIR__.'/auth.php';

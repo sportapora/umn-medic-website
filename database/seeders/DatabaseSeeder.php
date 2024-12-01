@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         $user = User::factory()->create([
             'name' => 'Admin Medic',
             'email' => 'admin@medic.umn.ac.id',
-            'password' => bcrypt('UMNmedic')
+            'password' => bcrypt('UMNmedic'),
+            'is_verified' => TRUE,
         ]);
 
         Role::create([
