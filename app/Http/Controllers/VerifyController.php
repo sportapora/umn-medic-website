@@ -9,22 +9,20 @@ class VerifyController extends Controller
 {
     public function index()
     {
-        $users = User::where('is_verified', false)->get();
+        $users = User::role('user')->orderBy('created_at')->get();
         return view('verification.index', compact('users'));
     }
 
-    public function verify(Request $request){
-        $user = User::find($request->get("id"));
-        $user ->is_verified = true;
-        $user ->save();
+    public function verify(User $user){
+        $user->is_verified = true;
+        $user->save();
 
-        return back()->with("success","User berhasil diverifikasi yeyyyyyyyyyyyyyyyyyyy");
+        return back()->with("success","User berhasil diverifikasi");
     }
 
-    public function decline(Request $request){
-        $user = User::find($request->get("id"));
+    public function decline(User $user){
         $user -> delete();
 
-        return back()->with("success","User berhasil ditolak sadddddddddddd");
+        return back()->with("success","User berhasil ditolak");
     }
 }
