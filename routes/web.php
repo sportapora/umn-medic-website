@@ -22,9 +22,9 @@ Route::middleware('throttle:global')->group(function () {
     Route::get('/gallery/{category?}', [GalleryController::class, 'index'])->name('gallery');
 
     Route::middleware('auth')->group(function () {
-        Route::get('/verify', [VerifyController::class, 'index'])->name('show.user');
-        Route::put('/verify', [VerifyController::class, 'verify'])->name('verify.user');
-        Route::put('/decline', [VerifyController::class, 'decline'])->name('decline.user');
+        Route::get('/verify', [VerifyController::class, 'index'])->name('user.show');
+        Route::put('/verify/{user:id}', [VerifyController::class, 'verify'])->name('user.verify');
+        Route::delete('/decline/{user:id}', [VerifyController::class, 'decline'])->name('user.decline');
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
