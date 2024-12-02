@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShiftController;
+use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\GalleryController;
@@ -21,6 +22,9 @@ Route::middleware('throttle:global')->group(function () {
     Route::get('/gallery/{category?}', [GalleryController::class, 'index'])->name('gallery');
 
     Route::middleware('auth')->group(function () {
+        Route::get('/verify', [VerifyController::class, 'index'])->name('show.user');
+        Route::put('/verify', [VerifyController::class, 'verify'])->name('verify.user');
+        Route::put('/decline', [VerifyController::class, 'decline'])->name('decline.user');
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
