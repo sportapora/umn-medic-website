@@ -136,6 +136,14 @@
                             Users
                         </a>
                     </li>
+                    <li>
+                        <a
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('attendance.index') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
+                            href="{{route('attendance.index')}}"
+                        >
+                            Rekap Absensi
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>
