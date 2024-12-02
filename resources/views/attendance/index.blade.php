@@ -1,4 +1,4 @@
-@extends('layouts.main', ['title' => 'Attendance'])
+@extends('layouts.main', ['title' => 'Rekap Absensi'])
 
 @section('content')
 <div class="container mx-auto p-6">
