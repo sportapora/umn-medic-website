@@ -18,7 +18,7 @@
         @csrf
         <div>
             <label for="shift" class="block text-sm font-medium text-gray-700">Pilih shift:</label>
-            <select id="shift" name="shift" onchange="checkShiftTime()" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-medic-primary focus:ring-medic-primary" required>
+            <select id="shift" name="shift" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-medic-primary focus:ring-medic-primary" required>
                 <option class="bg-[#F1F5F9]" value="">Pilih shift</option>
                 @foreach ($shifts as $shift)
                     <option class="bg-[#F1F5F9]" value="{{$shift->id}}">{{$shift->shift_start}}-{{$shift->shift_end}}</option>
@@ -41,31 +41,5 @@
     </form>
 
 </div>
-        <script>
-            function checkShiftTime() {
-                const shiftTime = document.getElementById('shift').value;
-                const submitButton = document.getElementById('submit_button');
-
-                const currentTime = new Date();
-                const currentHours = currentTime.getHours();
-                const currentMinutes = currentTime.getMinutes();
-
-                const [shiftHours, shiftMinutes] = shiftTime.split(':').map(Number);
-
-                const thresholdTime = new Date();
-                thresholdTime.setHours(shiftHours);
-                thresholdTime.setMinutes(shiftMinutes - 15);
-
-                if (currentTime >= thresholdTime) {
-                    submitButton.disabled = true;
-                    alert('You cannot submit attendance for this shift. Please choose another shift.');
-                } else {
-                    submitButton.disabled = false;
-                }
-
-    }
-    window.onload = checkShiftTime;
-</script>
-
 @endsection
 
