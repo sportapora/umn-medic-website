@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin Medic',
             'email' => 'admin@medic.umn.ac.id',
             'password' => bcrypt('UMNmedic'),
-            'nim' => '000000000'
+            'nim' => '000000000',
+            'is_verified' => TRUE,
         ]);
 
         Role::create([
