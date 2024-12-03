@@ -58,14 +58,20 @@ class AttendanceController extends Controller
         $current_time = Carbon::now();
         $already = Attendance::where('user_id', $request->user_id)->whereDate('created_at', $current_time->toDateString())->exists();
         if($already){
-            return back()->withErrors(['user_id' => 'You have already submitted attendance for today.']);
+            return back()->withErrors(['user_id' => 'You can not submit attendance more than once a day']);
         }
 
         $shift = Shift::find($request->shift);
         $shift_time = Carbon::parse($shift->shift_start);
-        $early = $shift_time->subMinutes(15)->greaterThan($current_time);
+        $early = Carbon::parse($shift_time)->subMinutes(15)->greaterThan($current_time);
         if($early){
             return back()->withErrors(['shift_time' => 'Too early to submit attendance for this shift.']);
+        }
+
+
+        $too_late = $current_time->greaterThan(Carbon::parse($shift->shift_end));
+        if($too_late){
+            return back()->withErrors(['shift_time' => 'You have already exceeded attendance time for this shift.']);
         }
 
         $is_late = $current_time->subMinutes(15)->greaterThan($shift_time);
@@ -78,7 +84,7 @@ class AttendanceController extends Controller
         $attendance->photo = $path;
         $attendance->save();
 
-        return redirect('/');
+        return redirect('/attendance/create')->with('success', 'Attendance submitted successfully');
     }
 
     /**
