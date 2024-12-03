@@ -15,6 +15,13 @@
                  x-init="setTimeout(() => show = false, 2000)" class="bg-red-100 text-red-700 p-4 rounded mb-6">
                 {{ session('error') }}
             </div>
+        @elseif(session('success'))
+            <div x-data="{ show: true }"
+                 x-show="show"
+                 x-transition
+                 x-init="setTimeout(() => show = false, 2000)" class="bg-green-100 text-green-700 p-4 rounded mb-6">
+                {{ session('success') }}
+            </div>
         @endif
 
         <form method="post" action="{{route('login')}}">

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('photo', 255);
             $table->foreignID('shift_id')->constrained()->cascadeOnDelete();
             $table->string('status', 10);
+            $table->string('tekanan', 10);
             $table->timestamps();
         });
     }

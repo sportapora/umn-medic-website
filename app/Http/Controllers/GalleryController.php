@@ -37,6 +37,6 @@ class GalleryController extends Controller
 
         $images = $galleryImages[$category] ?? $galleryImages['psychological'];
 
-        return view('gallery.index', compact('category', 'images'));
+        return view('gallery', compact('category', 'images'));
     }
 }

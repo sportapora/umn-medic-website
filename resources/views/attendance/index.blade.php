@@ -21,10 +21,12 @@
             <thead class="bg-gray-100 border-b">
                 <tr>
                     <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">NIM</th>
-                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Nama</th>
-                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Shift</th>
+                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Name</th>
+                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Shift Start</th>
                     <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Absen</th>
+                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Tekanan Darah</th>
                     <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Bukti</th>
+                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Action</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
@@ -36,8 +38,16 @@
                     <td class="px-4 py-2 text-sm font-semibold {{ $attendance->status == 'late' ? 'text-red-500' : 'text-green-500' }}">
                             {{$attendance->absen_time}}
                     </td>
+                    <td class="px-4 py-2 text-sm text-gray-800">{{$attendance->tekanan}}</td>
                     <td class="px-4 py-2">
                         <img src="{{asset($attendance->photo_url)}}" alt="Bukti Absensi" style="padding: 10px; max-width: 200px; max-height: 200px;"/>
+                    </td>
+                    <td>
+                        <form action="/attendance/{{$attendance->id}}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
