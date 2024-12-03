@@ -81,6 +81,7 @@ class AttendanceController extends Controller
         $attendance->user_id = $request->user_id;
         $attendance->shift_id = $request->shift;
         $attendance->status = $is_late ? 'late' : 'safe';
+        $attendance->tekanan = $request->tekanan;
         $attendance->photo = $path;
         $attendance->save();
 
@@ -116,6 +117,8 @@ class AttendanceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $attendance = Attendance::find($id);
+        $attendance->delete();
+        return redirect('/attendance');
     }
 }
