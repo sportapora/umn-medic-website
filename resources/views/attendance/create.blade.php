@@ -3,73 +3,65 @@
 @section('content')
 <div class="container mx-auto p-6">
     <h1 class="text-center text-4xl font-bold mb-6 text-medic-primary">Absen</h1>
-    @if ($errors->any())
-        <div class="alert alert-danger text-center mb-2">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-            </ul>
-        </div>
+
+    @if (session('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative text-center mb-4" role="alert">
+        <span class="block sm:inline">{{ session('success') }}</span>
+        <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.style.display='none';">
+            <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M14.348 5.652a1 1 0 011.415 1.415L11.415 11l4.348 4.348a1 1 0 01-1.415 1.415L10 12.415l-4.348 4.348a1 1 0 01-1.415-1.415L8.585 11 4.237 6.652a1 1 0 011.415-1.415L10 9.585l4.348-4.348z" />
+            </svg>
+        </button>
+    </div>
     @endif
-        
-        
+
+
+    @if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center mb-4" role="alert">
+        @foreach ($errors->all() as $error)
+        <span class="block sm:inline">{{ $error }}</span>
+        @endforeach
+        <button type="button" class="absolute top-0 bottom-0 right-0 px-4 py-3" onclick="this.parentElement.style.display='none';">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M14.348 5.652a1 1 0 011.415 1.415L11.415 11l4.348 4.348a1 1 0 01-1.415 1.415L10 12.415l-4.348 4.348a1 1 0 01-1.415-1.415L8.585 11 4.237 6.652a1 1 0 011.415-1.415L10 9.585l4.348-4.348z" />
+            </svg>
+        </button>
+    </div>
+    @endif
+
+
+
     <form action="/attendance" method="post" enctype="multipart/form-data" class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6 space-y-4 mb-5">
         @csrf
         <div>
-            <label for="shift_time" class="block text-sm font-medium text-gray-700">Pilih shift:</label>
-            <select id="shift_time" name="shift_time" onchange="checkShiftTime()" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-medic-primary focus:ring-medic-primary" required>
+            <label for="shift" class="block text-sm font-medium text-gray-700">Pilih shift:</label>
+            <select id="shift" name="shift" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-medic-primary focus:ring-medic-primary" required>
                 <option class="bg-[#F1F5F9]" value="">Pilih shift</option>
-                <option class="bg-[#F1F5F9]" value="8:00">8:00-11:00</option>
-                <option class="bg-[#F1F5F9]" value="11:00">11:00-14:00</option>
-                <option class="bg-[#F1F5F9]" value="14:00">14:00-17:00</option>
-                <option class="bg-[#F1F5F9]" value="21:00">21:00-22:00</option>
+                @foreach ($shifts as $shift)
+                    <option class="bg-[#F1F5F9]" value="{{$shift->id}}">{{$shift->shift_start}}-{{$shift->shift_end}}</option>
+                @endforeach
             </select>
         </div>
-            
+
+        <div>
+            <label for="tekanan" class="block text-sm font-medium text-gray-700">Tekanan</label>
+            <input type="text" name="tekanan" id="tekanan" placeholder="Ex: 120/80" required />
+        </div>
+
         <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}" />
 
         <div>
             <label for="photo" class="block text-sm font-medium text-gray-700">Bukti Foto</label>
             <input type="file" name="photo" class="mt-1 mb-3 block w-full border border-gray-300 rounded-md shadow-sm focus:border-medic-primary focus:ring-medic-primary transition duration-150" required />
         </div>
-        
-        <button type="submit" 
+
+        <button type="submit"
             id="submit_button"
             class="w-full py-2 px-4 bg-medic-primary text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transition duration-150">
             Submit
         </button>
     </form>
 
-    <a href="./" class="underline hover:text-medic-primary transition duration-150">
-        ← Kembali ke Rekap Absensi
-    </a>        
 </div>
-        <script>
-            function checkShiftTime() {
-                const shiftTime = document.getElementById('shift_time').value;
-                const submitButton = document.getElementById('submit_button');
-                
-                const currentTime = new Date();
-                const currentHours = currentTime.getHours();
-                const currentMinutes = currentTime.getMinutes();
-                
-                const [shiftHours, shiftMinutes] = shiftTime.split(':').map(Number);
-                
-                const thresholdTime = new Date();
-                thresholdTime.setHours(shiftHours);
-                thresholdTime.setMinutes(shiftMinutes - 15);
-                
-                if (currentTime >= thresholdTime) {
-                    submitButton.disabled = true;
-                    alert('You cannot submit attendance for this shift. Please choose another shift.');
-                } else {
-                    submitButton.disabled = false;
-                }
-
-    }
-    window.onload = checkShiftTime;
-</script>
-
 @endsection
 
