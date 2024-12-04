@@ -18,70 +18,69 @@
 <!-- /About -->
 
 <!-- Filosofi -->
-    <div class="flex flex-col bg-medic-secondary items-center gap-12 py-32">
-        <div class="text-medic-primary-dark font-bold text-5xl">
-            Filosofi Logo
-        </div>
-        <div class="">
-            <img src="{{ asset('assets/logos/medic-logo.png') }}" alt="medic-logo">
-        </div>
-        <div class="flex flex-row custom-container">
-            <div class="flex flex-col gap-12">
-                <div class="flex flex-row gap-12 items-center">
-                    <img src="{{ asset('assets/images/filosofi/Photo.png') }}" alt="">
-                    <div class="flex flex-col justify-center ">
-                        <div class="text-medic-primary-dark text-xl">
-                            Sisi Terbuka pada Pertemuan Tanda Plus
-                        </div>
-                        <div class="text-xl text-wrap w-1/2">
-                            Melambangkan keterbukaan
-                            UMN Medical Center kepada siapapun.
-                        </div>
+<div class="flex flex-col bg-medic-secondary items-center gap-12 py-32 px-4">
+    <div class="text-medic-primary-dark font-bold text-5xl text-center sm:text-4xl">
+        Filosofi Logo
+    </div>
+    <div class="text-center">
+        <img src="{{ asset('assets/logos/medic-logo.png') }}" alt="medic-logo" class="mx-auto max-w-xs sm:max-w-md md:max-w-lg">
+    </div>
+    <div class="flex flex-col sm:flex-row custom-container gap-12 sm:gap-16">
+        <div class="flex flex-col gap-12">
+            <div class="flex flex-col lg:flex-row gap-12 sm:gap-16 items-center justify-center">
+                <img src="{{ asset('assets/images/filosofi/Photo.png') }}" alt="" class="mx-auto w-1/2 sm:w-1/4 md:w-1/4 lg:w-1/4">
+                <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
+                    <div class="text-medic-primary-dark text-xl">
+                        Sisi Terbuka pada Pertemuan Tanda Plus
                     </div>
-                    <img src="{{ asset('assets/images/filosofi/Group 15.png') }}" alt="" class="ps-16">
-                    <div class="flex flex-col justify-center ">
-                        <div class="text-medic-primary-dark text-xl">
+                    <div class="text-xl">
+                        Melambangkan keterbukaan UMN Medical Center kepada siapapun.
+                    </div>
+                </div>
+                <img src="{{ asset('assets/images/filosofi/Group 15.png') }}" alt="" class="mx-auto w-1/2 sm:w-1/4 md:w-1/4">
+                <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
+                    <div class="text-medic-primary-dark text-xl">
                         Logo Universitas Multimedia Nusantara
-                        </div>
-                        <div class="text-xl text-balance">
+                    </div>
+                    <div class="text-xl">
                         Melambangkan UMN Medical Center Merupakan bagian dari Universitas Multimedia Nusantara.
-                        </div>
                     </div>
                 </div>
-                <div class="flex flex-row gap-12 items-center">
-                    <img src="{{ asset('assets/images/filosofi/Photo (1).png') }}" alt="">
-                    <div class="flex flex-col justify-center w-1/2">
-                        <div class="text-medic-primary-dark text-xl">
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12 sm:gap-16 items-center justify-center">
+                <img src="{{ asset('assets/images/filosofi/Photo (1).png') }}" alt="" class="mx-auto w-1/2 md:w-1/4">
+                <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
+                    <div class="text-medic-primary-dark text-xl">
                         Warna Hijau
-                        </div>
-                        <div class="text-xl text-wrap w-1/2">
-                        Melambangkan kesegaran dan keharmonisan.
-                        </div>
                     </div>
-                    <img src="{{ asset('assets/images/filosofi/Group 16.png') }}" alt="" class="ps-16" >
-                    <div class="flex flex-col justify-center ">
-                        <div class="text-medic-primary-dark text-xl">
-                        Tanda Plus Hijau
-                        </div>
-                        <div class="text-xl text-balance">
-                        Melambangkan 4 fakultas yang ada di Universitas Multimedia Nusantara, yang berarti kerjasama dan solidaritas antar anggota.
-                        </div>
+                    <div class="text-xl">
+                        Melambangkan kesegaran dan keharmonisan.
                     </div>
                 </div>
-                <div class="flex flex-row gap-12 items-center">
-                    <img src="{{ asset('assets/images/filosofi/Photo (2).png') }}" alt="">
-                    <div class="flex flex-col justify-center ">
-                        <div class="text-medic-primary-dark text-xl">
-                        Bagian Melengkung pada Ujung Tanda Plus
-                        </div>
-                        <div class="text-xl text-wrap w-1/2">
-                        Melambangkan fleksibilitas.
-                        </div>
+                <img src="{{ asset('assets/images/filosofi/Group 16.png') }}" alt="" class="mx-auto w-1/2 md:w-1/4">
+                <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
+                    <div class="text-medic-primary-dark text-xl">
+                        Tanda Plus Hijau
+                    </div>
+                    <div class="text-xl">
+                        Melambangkan 4 fakultas yang ada di Universitas Multimedia Nusantara, yang berarti kerjasama dan solidaritas antar anggota.
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <img src="{{ asset('assets/images/filosofi/Photo (2).png') }}" alt="" class="w-[50%] md:w-[25%] lg:w-[14%]">
+                <div class="flex flex-col justify-center ms-0 md:ms-4.5">
+                    <div class="text-medic-primary-dark text-xl">
+                    Bagian Melengkung pada Ujung Tanda Plus
+                    </div>
+                    <div class="text-xl text-wrap text-center lg:text-left">
+                    Melambangkan fleksibilitas.
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <!-- /Filosofi -->
 
 <!-- Tagline -->
