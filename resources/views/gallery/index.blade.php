@@ -25,14 +25,6 @@
             </a>
         </div>
 
-<<<<<<< Updated upstream
-        <div class="grid grid-cols-3 gap-4 mt-10">
-            @foreach ($images as $image)
-                <div class="w-full h-40 bg-gray-300 rounded">
-                    <p class="text-center pt-16">{{ $image }}</p>
-                </div>
-            @endforeach
-=======
         <div class="flex justify-center w-full">
             <div class="grid grid-cols-3 gap-4 mt-10 w-full max-w-screen-lg">
                 <!-- First Row -->
@@ -63,7 +55,6 @@
                     <img src="path/to/image8.jpg" alt="Image 8" class="w-full h-full object-cover">
                 </div>
             </div>
->>>>>>> Stashed changes
         </div>
     </div>
 @endsection
