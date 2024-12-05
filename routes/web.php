@@ -9,6 +9,7 @@ use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\FormController;
 
 Route::middleware('throttle:global')->group(function () {
     Route::controller(PagesController::class)->group(function () {
@@ -34,5 +35,8 @@ Route::middleware('throttle:global')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     });
+
+    Route::get('/form-pengajuan', [FormController::class, 'create'])->name('form.create');
+    Route::post('/form-pengajuan', [FormController::class, 'store'])->name('form.store');
 });
 require __DIR__ . '/auth.php';
