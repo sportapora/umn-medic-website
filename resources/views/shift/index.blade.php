@@ -43,7 +43,7 @@
                         <tr class="border-b hover:bg-gray-100">
                             <td class="py-4 px-6 text-gray-800">{{ $shift->shift_start }}</td>
                             <td class="py-4 px-6 text-gray-800">{{ $shift->shift_end }}</td>
-                            <td class="py-4 px-6 text-center">
+                            <td class="py-4 px-6">
                                 <div class="flex flex-row gap-4">
                                     <button
                                         data-modal-target="edit-modal-{{$shift->id}}"

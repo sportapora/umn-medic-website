@@ -21,7 +21,7 @@
             </div>
 
             <!-- add calendar -->
-            <div class="flex flex-col md:flex-row items-center justify-between md:space-x-4 space-y-4 md:space-y-0">
+            <div class="flex flex-col md:flex-row items-center justify-between space-x-0 md:space-x-4 space-y-4 md:space-y-0">
                 <div class="flex flex-col">
                     <p class="text-medic-primary-dark text-3xl font-bold">Kalender Pengajuan
                         <br/>
@@ -30,7 +30,7 @@
                     <img src="{{asset("assets/images/ContactUs.png")}}"
                          class="ms-28 w-[300px] md:w-[500px] h-[300px] md:h-[480px] object-contain" alt="">
                 </div>
-                <div class="w-[300px] md:w-[703.61px] h-[300px] md:h-[619px] me-12" id="calendar"></div>
+                <div class="w-full md:w-[703.61px] h-[300px] md:h-[619px] me-12" id="calendar"></div>
             </div>
             <!-- end calendar -->
 

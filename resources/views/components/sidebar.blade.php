@@ -75,8 +75,8 @@
                     </li>
                     <li>
                         <a
-                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
-                            href=""
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('pengajuan-jasa.*') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
+                            href="{{route('pengajuan-jasa.index')}}"
                         >
                             <svg
                                 class="fill-current"
