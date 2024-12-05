@@ -7,6 +7,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import persist from "@alpinejs/persist";
 import Alpine from 'alpinejs';
+import gsap from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
@@ -65,3 +67,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// Animasi untuk bagian tagline dan quote muncul
+document.addEventListener("DOMContentLoaded", () => {
+    gsap.to(".tagline", {
+        opacity: 1,
+        y: 0,
+        duration: 15,
+        ease: "power3.out",
+    });
+
+    gsap.to(".quote", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.5,
+    });
+
+    gsap.to(".star-icon", {
+        rotation: 360,
+        repeat: -1,
+        duration: 10,
+        ease: "none",
+    });
+});
