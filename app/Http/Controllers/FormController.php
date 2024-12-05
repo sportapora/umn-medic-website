@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
 {
     public function create()
     {
-        return view('formPengajuan/index');
+        $pengajuan = ContactUs::get('tanggal_acara', 'waktu_mulai');
+        return view('contactUs.form');
     }
 
     public function store(Request $request)
@@ -30,6 +32,8 @@ class FormController extends Controller
             'jumlah_tim_medis' => 'required',
             'keterangan' => 'required',
         ]);
+
+        ContactUs::create($validated);
 
         return redirect()->route('form.create')->with('success', 'Form pengajuan berhasil dikirim!');
     }

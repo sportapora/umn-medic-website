@@ -2,7 +2,7 @@ import './bootstrap';
 import 'flowbite';
 import "../css/satoshi.css";
 import "../css/app.css";
-import { Calendar } from '@fullcalendar/core';
+import {Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import persist from "@alpinejs/persist";
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     `,
                 };
             },
-            events: function (fetchInfo, successCallback, failureCallback) {
+            events: function (fetchInfo, successCallback) {
                 fetch('/contact-us-data')
                     .then(response => response.json())
                     .then(events => {
@@ -40,10 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             if (event.status === 'Pending') {
                                 eventColor = 'gray';
-                            } else if (event.status === 'Approve') {
-                                eventColor = 'green';
-                            } else if (event.status === 'Decline') {
+                            } else if (event.status === 'On Progress') {
+                                eventColor = 'blue';
+                            } else if (event.status === 'Canceled') {
                                 eventColor = 'red';
+                            } else if (event.status === 'Completed') {
+                                eventColor = 'green';
                             }
 
                             return {
@@ -59,5 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         calendar.render();
     }
+    // end fullcalendar
+
 });
-// end fullcalendar
+
