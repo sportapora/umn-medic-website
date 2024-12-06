@@ -116,27 +116,27 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
-            trigger: ".maskot-title",  // Elemen yang memicu animasi
-            start: "top 80%",          // Mulai animasi saat elemen mencapai 80% dari viewport
-            end: "top 30%",            // Selesai saat elemen mencapai 30% dari viewport
-            scrub: 1,                  // Sinkronkan animasi dengan scroll
-            markers: false,            // Nonaktifkan marker setelah uji coba
+            trigger: ".maskot-title",  
+            start: "top 80%",          
+            end: "top 30%",            
+            scrub: 1,                  
+            markers: false,            
         }
     });
 
     // Animasi untuk gambar maskot
     gsap.to(".maskot-image", {
         opacity: 1,
-        scale: 1.1,              // Membesarkan gambar sedikit untuk efek dinamis
-        rotation: 0,            // Memberikan sedikit rotasi untuk animasi
+        scale: 1.1,             
+        rotation: 0,            
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
-            trigger: ".maskot-image", // Elemen yang memicu animasi
-            start: "top 80%",          // Mulai animasi saat elemen mencapai 80% dari viewport
-            end: "top 30%",            // Selesai saat elemen mencapai 30% dari viewport
-            scrub: 1,                  // Sinkronkan animasi dengan scroll
-            markers: false,            // Nonaktifkan marker setelah uji coba
+            trigger: ".maskot-image",
+            start: "top 80%",          
+            end: "top 30%",            
+            scrub: 1,                  
+            markers: false,            
         }
     });
 });
