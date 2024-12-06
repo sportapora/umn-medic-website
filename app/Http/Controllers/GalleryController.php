@@ -7,13 +7,14 @@ use App\Models\Gallery;
 
 class GalleryController extends Controller
 {
-    public function index($category = null)
+    public function index(Request $request)
     {
+        $category = $request->query('category');
         $galleries = Gallery::when($category, function ($query) use ($category) {
             return $query->where('category', $category);
         })->get();
 
-        return view('gallery', ['galleries' => $galleries, 'category' => $category]);
+        return view('gallery.index', compact('galleries', 'category'));
     }
 
     public function create()
@@ -25,7 +26,7 @@ class GalleryController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'image' => 'required|image|max:2048', 
+            'image' => 'required|image|max:2048',
             'category' => 'required|string'
         ]);
 

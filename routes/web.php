@@ -26,6 +26,7 @@ Route::middleware('throttle:global')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::resource('attendance', AttendanceController::class);
         Route::resource('shifts', ShiftController::class)->only(['index', 'store', 'update', 'destroy']);
+        Route::resource('gallery', GalleryController::class)->except(['show']);
     });
 
     Route::middleware(['auth', 'role:admin'])->group(function () {
