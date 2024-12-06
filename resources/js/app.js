@@ -140,3 +140,122 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk gambar logo
+    gsap.to(".about-logo", {
+        opacity: 1,
+        scale: 1.05,        
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-logo",
+            start: "top 70%",  
+            end: "top 30%",    
+            scrub: 1,          
+            markers: false,    
+        }
+    });
+
+    // Animasi untuk judul 'ABOUT UMN MEDICAL CENTER'
+    gsap.to(".about-title", {
+        opacity: 1,
+        y: 0,                  
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-title",
+            start: "top 80%",    
+            end: "top 30%",      
+            scrub: 1,            
+            markers: false,      
+        }
+    });
+
+    // Animasi untuk paragraf deskripsi
+    gsap.to(".about-description", {
+        opacity: 1,
+        y: 0,                    
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-description", 
+            start: "top 80%",              
+            end: "top 30%",                
+            scrub: 1,                      
+            markers: false,                
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Parallax Effect pada bagian VISI
+    gsap.fromTo(".visi-text", {
+        y: -100, // Mulai dari posisi di atas
+        opacity: 0,
+    }, {
+        y: 0, // Posisi akhir
+        opacity: 1,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".visi-text", // Set trigger untuk elemen yang memiliki kelas visi-text
+            start: "top 80%", // Animasi dimulai saat top elemen mencapai 80% viewport
+            end: "top 30%", // Animasi selesai saat top elemen mencapai 30% viewport
+            scrub: 1, // Menyinkronkan animasi dengan scroll
+            markers: false, // Menyembunyikan marker scroll
+        }
+    });
+
+    // Parallax Effect pada gambar VISI
+    gsap.fromTo(".visi-img", {
+        y: 100, // Mulai dari bawah
+    }, {
+        y: 0, // Posisi akhir
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".visi-img", // Set trigger untuk elemen yang memiliki kelas visi-img
+            start: "top 80%", 
+            end: "top 30%", 
+            scrub: 1, 
+            markers: false,
+        }
+    });
+
+    // Parallax Effect pada bagian MISI
+    gsap.fromTo(".misi-text", {
+        y: -100, 
+        opacity: 0,
+    }, {
+        y: 0, 
+        opacity: 1,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".misi-text", 
+            start: "top 80%", 
+            end: "top 30%", 
+            scrub: 1, 
+            markers: false,
+        }
+    });
+
+    // Parallax Effect pada gambar MISI
+    gsap.fromTo(".misi-img", {
+        y: 150, 
+    }, {
+        y: 0, 
+        duration: 2.0,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".misi-img", 
+            start: "top 90%", 
+            end: "top 30%", 
+            scrub: 1, 
+            markers: false,
+        }
+    });
+});
