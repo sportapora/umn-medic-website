@@ -1,42 +1,78 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Gallery;
 
 class GalleryController extends Controller
 {
-    public function index($category = 'psychological')
+    public function index($category = null)
     {
-        $galleryImages = [
-            'psychological' => [
-                'Pelatihan Psychological Image 1',
-                'Pelatihan Psychological Image 2',
-                'Pelatihan Psychological Image 3',
-                'Pelatihan Psychological Image 4',
-                'Pelatihan Psychological Image 5',
-                'Pelatihan Psychological Image 6',
-            ],
-            'eksternal' => [
-                'Pelatihan Eksternal Image 1',
-                'Pelatihan Eksternal Image 2',
-                'Pelatihan Eksternal Image 3',
-                'Pelatihan Eksternal Image 4',
-            ],
-            'bonding' => [
-                'Bonding Image 1',
-                'Bonding Image 2',
-                'Bonding Image 3',
-            ],
-            'internal' => [
-                'Pelatihan Internal Image 1',
-                'Pelatihan Internal Image 2',
-                'Pelatihan Internal Image 3',
-                'Pelatihan Internal Image 4',
-            ],
-        ];
+        $galleries = Gallery::when($category, function ($query) use ($category) {
+            return $query->where('category', $category);
+        })->get();
 
-        $images = $galleryImages[$category] ?? $galleryImages['psychological'];
+        return view('gallery', ['galleries' => $galleries, 'category' => $category]);
+    }
 
-        return view('gallery.index', compact('category', 'images'));
+    public function create()
+    {
+        return view('gallery.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'required|image|max:2048', 
+            'category' => 'required|string'
+        ]);
+
+        $imagePath = $request->file('image')->store('gallery', 'public');
+
+        Gallery::create([
+            'title' => $request->title,
+            'image' => $imagePath,
+            'category' => $request->category,
+        ]);
+
+        return redirect()->route('gallery.index')->with('success', 'Gallery item added successfully!');
+    }
+
+    public function edit($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view('gallery.edit', compact('gallery'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'nullable|image|max:2048',
+            'category' => 'required|string'
+        ]);
+
+        $gallery = Gallery::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('gallery', 'public');
+            $gallery->image = $imagePath;
+        }
+
+        $gallery->title = $request->title;
+        $gallery->category = $request->category;
+        $gallery->save();
+
+        return redirect()->route('gallery.index')->with('success', 'Gallery item updated successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        $gallery->delete();
+
+        return redirect()->route('gallery.index')->with('success', 'Gallery item deleted successfully!');
     }
 }
