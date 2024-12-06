@@ -21,6 +21,11 @@ Route::middleware('throttle:global')->group(function () {
     });
 
     Route::get('/contact-us-data', [ContactUsController::class, 'fetchContactUs'])->name('contactUs.data');
+
+    Route::get('/gallery-home', function () {
+        return view('gallery_home');
+    })->name('gallery.home');
+
     Route::get('/gallery/{category?}', [GalleryController::class, 'index'])->name('gallery');
 
     Route::middleware('auth')->group(function () {

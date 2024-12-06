@@ -76,4 +76,10 @@ class GalleryController extends Controller
 
         return redirect()->route('gallery.index')->with('success', 'Gallery item deleted successfully!');
     }
+
+    public function home()
+    {
+        return view('gallery.gallery_home'); 
+    }
+
 }
