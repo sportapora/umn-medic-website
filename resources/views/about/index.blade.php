@@ -105,14 +105,15 @@
 <!-- /Tagline -->
 
 <!-- Maskot -->
-    <div class="flex flex-col bg-medic-secondary gap-12 justify-center items-center">
-        <div class="text-5xl text-medic-primary-dark font-bold mt-28">
-            Maskot
-        </div>
-        <div class="mb-16">
-            <img src="{{ asset('assets/images/Medi Ical.png') }}" alt="">
-        </div>
+<div class="flex flex-col bg-medic-secondary gap-12 justify-center items-center">
+    <div class="text-5xl text-medic-primary-dark font-bold mt-28 maskot-title" data-animate>
+        Maskot
     </div>
+    <div class="mb-16 lg:w-auto maskot-image" data-animate>
+        <img src="{{ asset('assets/images/Medi Ical.png') }}" alt="">
+    </div>
+</div>
+
 <!-- Maskot -->
 
 <!-- Struktur -->
