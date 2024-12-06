@@ -2,11 +2,11 @@
 
 @section('content')
     <!-- Welcome Page -->
-    <div class="flex custom-container items-center mx-10">
+    <div class="flex custom-container items-center mx-24">
         <div class="flex flex-col lg:flex-row w-full justify-between">
-            <div class="flex flex-col gap-3 justify-center w-full lg:w-1/2">
-                <p class="text-5xl font-bold text-medic-primary-dark">Welcome to</p>
-                <p class="text-5xl font-bold text-medic-primary">UMN MEDICAL CENTER</p>
+            <div class="flex flex-col gap-2 justify-center w-full lg:w-1/2">
+                <h1 class="text-4xl lg:text-5xl font-bold text-medic-primary-dark">Welcome to</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold text-medic-primary">UMN MEDICAL CENTER</h1>
                 <p class="text-wrap text-xl text-justify">
                     UMN Medical Center merupakan Lembaga Semi Otonom di bawah pengawasan Badan Eksekutif Mahasiswa yang
                     bergerak di bidang kesehatan. Mulai beroperasi sejak tahun 2014, dan telah resmi berdiri pada tahun
@@ -33,28 +33,24 @@
     <!-- /Welcome Page -->
 
     <!-- About UMN Medic -->
-    <div
-        class=" bg-medic-secondary py-52">
+    <div class=" bg-medic-secondary py-40">
         <div class="mx-10 flex flex-col lg:flex-row max-w-full justify-start lg:justify-center items-center gap-12">
-            <img src="{{ asset('assets/logos/medic-logo.png') }}" class="w-1/2 lg:w-auto"
-                 alt="UMN Medical Center Mascot"/>
+            <img src="{{ asset('assets/logos/medic-logo.png') }}" class="w-1/2 lg:w-auto about-logo" data-animate alt="UMN Medical Center Mascot"/>
             <div>
-                <p class="text-medic-primary-dark text-3xl font-bold mb-8">
+                <p class="text-medic-primary-dark text-3xl font-bold mb-8 about-title" data-animate>
                     ABOUT <span class="text-medic-primary">UMN MEDICAL CENTER</span>
                 </p>
-                <p class="text-balance text-xl text-justify">
+                <p class="text-balance text-xl text-justify about-description" data-animate>
                     UMN Medical Center berorientasi pada pelayanan kesehatan dengan kewajiban untuk memberikan
-                    pertolongan
-                    pertama, obat-obatan, serta edukasi kepada seluruh civitas akademika Universitas Multimedia
-                    Nusantara
-                    melalui kampanye-kampanye interaktif dan seminar mengenai kesehatan. Selain memiliki kegiatan yang
-                    interaktif, UMN Medical Center juga belajar mengenai solidaritas dan kekeluargaan yang disertai
-                    dengan
+                    pertolongan pertama, obat-obatan, serta edukasi kepada seluruh civitas akademika Universitas Multimedia
+                    Nusantara melalui kampanye-kampanye interaktif dan seminar mengenai kesehatan. Selain memiliki kegiatan yang
+                    interaktif, UMN Medical Center juga belajar mengenai solidaritas dan kekeluargaan yang disertai dengan
                     pengimplementasian nilai 5C, baik di dalam maupun di luar kampus.
                 </p>
             </div>
         </div>
     </div>
+
     <!-- /About UMN Medic -->
 
     <!-- Visi & Misi -->

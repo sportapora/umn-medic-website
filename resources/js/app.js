@@ -140,3 +140,51 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk gambar logo
+    gsap.to(".about-logo", {
+        opacity: 1,
+        scale: 1.05,        
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-logo",
+            start: "top 70%",  
+            end: "top 30%",    
+            scrub: 1,          
+            markers: true,    
+        }
+    });
+
+    // Animasi untuk judul 'ABOUT UMN MEDICAL CENTER'
+    gsap.to(".about-title", {
+        opacity: 1,
+        y: 0,                  
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-title",
+            start: "top 80%",    
+            end: "top 30%",      
+            scrub: 1,            
+            markers: true,      
+        }
+    });
+
+    // Animasi untuk paragraf deskripsi
+    gsap.to(".about-description", {
+        opacity: 1,
+        y: 0,                    
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-description", 
+            start: "top 80%",              
+            end: "top 30%",                
+            scrub: 1,                      
+            markers: true,                
+        }
+    });
+});
