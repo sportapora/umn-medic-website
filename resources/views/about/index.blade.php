@@ -19,9 +19,6 @@
 
 <!-- Filosofi -->
 <div class="flex flex-col bg-medic-secondary items-center gap-12 py-32 px-4">
-    <div class="text-medic-primary-dark font-bold text-5xl text-center sm:text-4xl">
-        Filosofi Logo
-    </div>
     <div class="text-center">
         <img src="{{ asset('assets/logos/medic-logo.png') }}" alt="medic-logo" class="mx-auto max-w-xs sm:max-w-md md:max-w-lg">
     </div>
