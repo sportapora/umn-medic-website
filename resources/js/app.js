@@ -10,6 +10,8 @@ import Alpine from 'alpinejs';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 Alpine.plugin(persist);
 window.Alpine = Alpine;
 Alpine.start();
@@ -67,21 +69,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// Animasi untuk bagian tagline dan quote muncul
+// Animasi
 document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk elemen dengan kelas .tagline
     gsap.to(".tagline", {
         opacity: 1,
         y: 0,
-        duration: 15,
+        duration: 1.5,
         ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".tagline",
+            start: "top 70%",      
+            end: "top 30%",        
+            scrub: 1,              
+        }
     });
 
+    // Animasi untuk elemen dengan kelas .quote
     gsap.to(".quote", {
         opacity: 1,
         y: 0,
         duration: 1.5,
         ease: "power3.out",
         delay: 0.5,
+        scrollTrigger: {
+            trigger: ".quote",
+            start: "top 70%",
+            end: "top 30%",
+            scrub: 1,
+        }
     });
 
     gsap.to(".star-icon", {
@@ -89,5 +105,38 @@ document.addEventListener("DOMContentLoaded", () => {
         repeat: -1,
         duration: 10,
         ease: "none",
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk judul 'Maskot'
+    gsap.to(".maskot-title", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".maskot-title",  // Elemen yang memicu animasi
+            start: "top 80%",          // Mulai animasi saat elemen mencapai 80% dari viewport
+            end: "top 30%",            // Selesai saat elemen mencapai 30% dari viewport
+            scrub: 1,                  // Sinkronkan animasi dengan scroll
+            markers: false,            // Nonaktifkan marker setelah uji coba
+        }
+    });
+
+    // Animasi untuk gambar maskot
+    gsap.to(".maskot-image", {
+        opacity: 1,
+        scale: 1.1,              // Membesarkan gambar sedikit untuk efek dinamis
+        rotation: 0,            // Memberikan sedikit rotasi untuk animasi
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".maskot-image", // Elemen yang memicu animasi
+            start: "top 80%",          // Mulai animasi saat elemen mencapai 80% dari viewport
+            end: "top 30%",            // Selesai saat elemen mencapai 30% dari viewport
+            scrub: 1,                  // Sinkronkan animasi dengan scroll
+            markers: false,            // Nonaktifkan marker setelah uji coba
+        }
     });
 });
