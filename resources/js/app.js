@@ -193,31 +193,31 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     // Parallax Effect pada bagian VISI
     gsap.fromTo(".visi-text", {
-        y: -100, // Mulai dari posisi di atas
+        y: -100,
         opacity: 0,
     }, {
-        y: 0, // Posisi akhir
+        y: 0, 
         opacity: 1,
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
-            trigger: ".visi-text", // Set trigger untuk elemen yang memiliki kelas visi-text
-            start: "top 80%", // Animasi dimulai saat top elemen mencapai 80% viewport
-            end: "top 30%", // Animasi selesai saat top elemen mencapai 30% viewport
-            scrub: 1, // Menyinkronkan animasi dengan scroll
-            markers: false, // Menyembunyikan marker scroll
+            trigger: ".visi-text",
+            start: "top 80%",
+            end: "top 30%",
+            scrub: 1,
+            markers: false,
         }
     });
 
     // Parallax Effect pada gambar VISI
     gsap.fromTo(".visi-img", {
-        y: 100, // Mulai dari bawah
+        y: 100,
     }, {
-        y: 0, // Posisi akhir
+        y: 0,
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
-            trigger: ".visi-img", // Set trigger untuk elemen yang memiliki kelas visi-img
+            trigger: ".visi-img",
             start: "top 80%", 
             end: "top 30%", 
             scrub: 1, 
