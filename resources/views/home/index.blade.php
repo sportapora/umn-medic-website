@@ -53,60 +53,57 @@
 
     <!-- /About UMN Medic -->
 
-    <!-- Visi & Misi -->
-        <!-- Visi -->
-        <div class="flex my-12 flex-col">
-            <div class="my-4 text-center text-5xl text-medic-primary-dark font-bold">
-                VISI
-            </div>
-            <div class="flex flex-col text-xl text-center">
-                <div class="text-xl text-center">
-                    Menjadikan UMN Medical Center sebagai unit sarana penolongan pertama di dalam kampus dengan
-                </div>
-                <div class="text-xl text-center">
-                    menjunjung tinggi kekeluargaan dan budi luhur serta berintegritas dalam segala hal.
-                </div>     
-            </div>
+<!-- Visi -->
+<div class="flex my-12 flex-col">
+    <div class="my-4 text-center text-5xl text-medic-primary-dark font-bold visi-text">
+        VISI
+    </div>
+    <div class="flex flex-col text-xl text-center visi-text">
+        <div class="text-xl text-center">
+            Menjadikan UMN Medical Center sebagai unit sarana penolongan pertama di dalam kampus dengan
         </div>
-        <!-- /Visi -->
+        <div class="text-xl text-center">
+            menjunjung tinggi kekeluargaan dan budi luhur serta berintegritas dalam segala hal.
+        </div>     
+    </div>
+</div>
 
-        <!-- Misi -->
-        <div class="flex h-cover lg:flex-col bg-medic-secondary gap-4">
-            <div class="my-20 lg:custom-container mx-12">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="flex flex-col gap-2 text">
-                        <div class="text-center lg:text-left text-5xl text-medic-primary-dark font-bold my-4">
-                            MISI
-                        </div>
-                        <div class="text-center text-wrap lg:text-justify lg:text-left lg:mr-48">
-                            <p class="text-xl font-medium text-black my-2">
-                                1. Memberikan penanganan dan pelayanan yang terbaik terhadap UMN Medical Center, baik untuk internal maupun
-                                eksternal Universitas Multimedia Nusantara.
-                            </p>
-                            <p class="text-xl font-medium text-black my-2">
-                                2. Membangun keterampilan kerja setiap anggota UMN Medical Center dalam segala aspek secara kolaboratif.
-                            </p>
-                            <p class="text-xl font-medium text-black my-2">
-                                3. Menyediakan dan memberikan edukasi mengenai kesehatan kepada pihak internal dan eksternal UMN Medical
-                                Center secara kreatif, inovatif, dan interaktif.
-                            </p>
-                            <p class="text-xl font-medium text-black my-2">
-                                4. Meningkatkan rasa kepekaan dan tanggung jawab setiap anggota UMN Medical Center dalam menjalankan
-                                kewajibannya.
-                            </p>
-                            <p class="text-xl font-medium text-black my-2">
-                                5. Menjadikan UMN Medical Center sebagai wadah pengembangan mahasiswa tidak hanya dari segi medis namun
-                                juga mengembangkan diri mahasiswa.
-                            </p>
-                            <p class="text-xl font-medium text-black my-2">
-                                6. Menjunjung tinggi keadilan baik terhadap pasien, sesama, serta diri sendiri.
-                            </p>
-                        </div>
-                    </div>
-                    <img src="{{ asset('assets/images/visi&misi/Misi.png') }}" alt="" class="w-1/2 self-center lg:w-auto" >
+<!-- Misi -->
+<div class="flex h-cover lg:flex-col bg-medic-secondary gap-4">
+    <div class="my-20 lg:custom-container mx-12">
+        <div class="flex flex-col lg:flex-row">
+            <div class="flex flex-col gap-2 text misi-text">
+                <div class="text-center lg:text-left text-5xl text-medic-primary-dark font-bold my-4">
+                    MISI
+                </div>
+                <div class="text-center text-wrap lg:text-justify lg:text-left lg:mr-48">
+                    <p class="text-xl font-medium text-black my-2">
+                        1. Memberikan penanganan dan pelayanan yang terbaik terhadap UMN Medical Center, baik untuk internal maupun
+                        eksternal Universitas Multimedia Nusantara.
+                    </p>
+                    <p class="text-xl font-medium text-black my-2">
+                        2. Membangun keterampilan kerja setiap anggota UMN Medical Center dalam segala aspek secara kolaboratif.
+                    </p>
+                    <p class="text-xl font-medium text-black my-2">
+                        3. Menyediakan dan memberikan edukasi mengenai kesehatan kepada pihak internal dan eksternal UMN Medical
+                        Center secara kreatif, inovatif, dan interaktif.
+                    </p>
+                    <p class="text-xl font-medium text-black my-2">
+                        4. Meningkatkan rasa kepekaan dan tanggung jawab setiap anggota UMN Medical Center dalam menjalankan
+                        kewajibannya.
+                    </p>
+                    <p class="text-xl font-medium text-black my-2">
+                        5. Menjadikan UMN Medical Center sebagai wadah pengembangan mahasiswa tidak hanya dari segi medis namun
+                        juga mengembangkan diri mahasiswa.
+                    </p>
+                    <p class="text-xl font-medium text-black my-2">
+                        6. Menjunjung tinggi keadilan baik terhadap pasien, sesama, serta diri sendiri.
+                    </p>
                 </div>
             </div>
+            <img src="{{ asset('assets/images/visi&misi/Misi.png') }}" alt="" class="w-1/2 self-center lg:w-auto misi-img" >
         </div>
-        <!-- /Misi -->
-    <!-- /Visi & Misi -->
+    </div>
+</div>
+
 @endsection
