@@ -24,6 +24,11 @@
         "@fullcalendar/timegrid": "^6.1.15",
         "flowbite": "^2.5.2",
         "fullcalendar": "^6.1.15",
+<<<<<<< Updated upstream
         "jsvectormap": "^1.6.0"
+=======
+        "jsvectormap": "^1.6.0",
+        "simple-datatables": "^9.2.1"
+>>>>>>> Stashed changes
     }
 }
