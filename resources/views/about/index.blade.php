@@ -2,14 +2,14 @@
 
 @section('content')
 <!-- About -->
-    <div class="flex flex-col items-center custom-container gap-12 pb-20">
+    <div class="flex flex-col items-center custom-container gap-12 pb-20 mx-[7%]">
         <div class="text-medic-primary-dark font-bold text-5xl">
             About
         </div>
-        <div class="flex flex-col xl:flex-row gap-12">
-            <img class="lg:h-auto lg:max-w-lg rounded-lg " src="{{ asset('assets/dummy/Dummy 1.jpg') }}" alt="image description">
-            <img class="lg:h-auto lg:max-w-lg rounded-lg " src="{{ asset('assets/dummy/Dummy 1.jpg') }}" alt="image description">
-            <img class="lg:h-auto lg:max-w-lg rounded-lg " src="{{ asset('assets/dummy/Dummy 1.jpg') }}" alt="image description">
+        <div class="flex flex-col xl:flex-row gap-8">
+            <img class="lg:h-auto lg:max-w-lg rounded-lg " src="{{ asset('assets/About Photo/photo 1.jpg') }}" alt="image description">
+            <img class="lg:h-auto lg:max-w-lg rounded-lg " src="{{ asset('assets/About Photo/photo 3.JPG') }}" alt="image description">
+            <img class="lg:h-auto lg:max-w-lg rounded-lg " src="{{ asset('assets/About Photo/photo 2.JPG') }}" alt="image description">
         </div>
         <div class="text-center text-xl">
             UMN Medical Center berorientasi pada pelayanan kesehatan dengan kewajiban untuk memberikan pertolongan pertama, obat-obatan, serta edukasi kepada seluruh civitas akademika Universitas Multimedia Nusantara melalui kampanye-kampanye interaktif dan seminar mengenai kesehatan. Selain memiliki kegiatan yang interaktif, UMN Medical Center juga belajar mengenai solidaritas dan kekeluargaan yang disertai dengan pengimplementasian nilai 5C, baik di dalam maupun di luar kampus.
