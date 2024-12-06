@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Welcome Page -->
-    <div class="flex custom-container items-center mx-24">
+    <div class="flex custom-container items-center mx-[7%]">
         <div class="flex flex-col lg:flex-row w-full justify-between">
             <div class="flex flex-col gap-2 justify-center w-full lg:w-1/2">
                 <h1 class="text-4xl lg:text-5xl font-bold text-medic-primary-dark">Welcome to</h1>
@@ -34,7 +34,7 @@
 
     <!-- About UMN Medic -->
     <div class=" bg-medic-secondary py-40">
-        <div class="mx-10 flex flex-col lg:flex-row max-w-full justify-start lg:justify-center items-center gap-12">
+        <div class="mx-[7%] flex flex-col lg:flex-row max-w-full justify-start lg:justify-center items-center gap-12">
             <img src="{{ asset('assets/logos/medic-logo.png') }}" class="w-1/2 lg:w-auto about-logo" data-animate alt="UMN Medical Center Mascot"/>
             <div>
                 <p class="text-medic-primary-dark text-3xl font-bold mb-8 about-title" data-animate>
@@ -70,7 +70,7 @@
 
 <!-- Misi -->
 <div class="flex h-cover lg:flex-col bg-medic-secondary gap-4">
-    <div class="my-20 lg:custom-container mx-12">
+    <div class="my-20 lg:custom-container mx-[7%]">
         <div class="flex flex-col lg:flex-row">
             <div class="flex flex-col gap-2 text misi-text">
                 <div class="text-center lg:text-left text-5xl text-medic-primary-dark font-bold my-4">
