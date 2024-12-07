@@ -1,8 +1,6 @@
 @extends('layouts.app', ['title' => 'Gallery'])
 
 @section('content')
-   
-
     <div class="container mx-auto mt-10">
         <h1 class="text-center text-2xl font-bold text-green-600">Gallery</h1>
 
@@ -25,33 +23,39 @@
             </a>
         </div>
 
-        <div class="flex justify-center w-full">
-            <div class="grid grid-cols-3 gap-4 mt-10 w-full max-w-screen-lg">
-                <!-- First Row -->
+        <div class="grid grid-cols-3 gap-4 mt-10 w-full max-w-screen-lg ml-30">
+            <!-- Column 1 -->
+            <div class="space-y-4">
                 <div class="bg-gray-300 rounded overflow-hidden h-40">
                     <img src="path/to/image1.jpg" alt="Image 1" class="w-full h-full object-cover">
                 </div>
                 <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image2.jpg" alt="Image 2" class="w-full h-full object-cover">
+                    <img src="path/to/image4.jpg" alt="Image 2" class="w-full h-full object-cover">
                 </div>
                 <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image3.jpg" alt="Image 3" class="w-full h-full object-cover">
+                    <img src="path/to/image4.jpg" alt="Image 3" class="w-full h-full object-cover">
                 </div>
-                <!-- Second Row -->
+            </div>
+
+            <!-- Column 2 -->
+            <div class="space-y-4">
                 <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image4.jpg" alt="Image 4" class="w-full h-full object-cover">
+                    <img src="path/to/image2.jpg" alt="Image 4" class="w-full h-full object-cover">
                 </div>
                 <div class="bg-gray-300 rounded overflow-hidden h-40">
                     <img src="path/to/image5.jpg" alt="Image 5" class="w-full h-full object-cover">
                 </div>
                 <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image6.jpg" alt="Image 6" class="w-full h-full object-cover">
+                    <img src="path/to/image5.jpg" alt="Image 6" class="w-full h-full object-cover">
                 </div>
-                <!-- Third Row -->
-                <div class="bg-gray-300 rounded overflow-hidden h-80 row-span-2">
+            </div>
+
+            <!-- Column 3 -->
+            <div class="space-y-4">
+                <div class="bg-gray-300 rounded overflow-hidden h-80">
                     <img src="path/to/image7.jpg" alt="Image 7" class="w-full h-full object-cover">
                 </div>
-                <div class="bg-gray-300 rounded overflow-hidden h-80 row-span-2">
+                <div class="bg-gray-300 rounded overflow-hidden h-80">
                     <img src="path/to/image8.jpg" alt="Image 8" class="w-full h-full object-cover">
                 </div>
             </div>
