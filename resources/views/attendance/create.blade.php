@@ -45,7 +45,7 @@
 
         <div>
             <label for="tekanan" class="block text-sm font-medium text-gray-700">Tekanan</label>
-            <input type="text" name="tekanan" id="tekanan" placeholder="Ex: 120/80" required />
+            <input type="text" name="tekanan" id="tekanan" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-medic-primary focus:ring-medic-primary" placeholder="Ex: 120/80" required />
         </div>
 
         <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}" />
