@@ -27,6 +27,10 @@ class AuthenticatedSessionController extends Controller
     {
         $user = User::where('email', $request->get('email'))->first();
 
+        if (!$user){
+            return back()->with('error','incorrect email or password');
+        }
+
         if ($user->is_verified) {
             $request->authenticate();
 
