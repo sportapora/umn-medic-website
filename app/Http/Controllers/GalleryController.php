@@ -7,15 +7,22 @@ use App\Models\Gallery;
 
 class GalleryController extends Controller
 {
+
     public function index(Request $request)
     {
-        $category = $request->query('category');
-        $galleries = Gallery::when($category, function ($query) use ($category) {
-            return $query->where('category', $category);
-        })->get();
+        $category = $request->category;
+
+        if ($category) {
+            $galleries = Gallery::where('category', $category)->get();
+        } else {
+            $galleries = Gallery::all(); 
+        }
 
         return view('gallery.index', compact('galleries', 'category'));
     }
+
+
+
 
     public function create()
     {
@@ -25,20 +32,20 @@ class GalleryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'required|image|max:2048',
-            'category' => 'required|string'
+            'title' => 'required',
+            'category' => 'required',
+            'image' => 'required|image',
         ]);
 
-        $imagePath = $request->file('image')->store('gallery', 'public');
+        $imagePath = $request->file('image')->store('images', 'public');
 
         Gallery::create([
             'title' => $request->title,
-            'image' => $imagePath,
             'category' => $request->category,
+            'image' => $imagePath,
         ]);
 
-        return redirect()->route('gallery.index')->with('success', 'Gallery item added successfully!');
+        return redirect()->route('gallery.index');
     }
 
     public function edit($id)
@@ -50,15 +57,15 @@ class GalleryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'nullable|image|max:2048',
-            'category' => 'required|string'
+            'title' => 'required',
+            'category' => 'required',
+            'image' => 'nullable|image',
         ]);
 
         $gallery = Gallery::findOrFail($id);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('gallery', 'public');
+            $imagePath = $request->file('image')->store('images', 'public');
             $gallery->image = $imagePath;
         }
 
@@ -66,7 +73,7 @@ class GalleryController extends Controller
         $gallery->category = $request->category;
         $gallery->save();
 
-        return redirect()->route('gallery.index')->with('success', 'Gallery item updated successfully!');
+        return redirect()->route('gallery.index');
     }
 
     public function destroy($id)
@@ -84,9 +91,17 @@ class GalleryController extends Controller
 
     public function form($id = null)
     {
-        $gallery = $id ? Gallery::findOrFail($id) : null;
+        $gallery = null;
+
+
+        if ($id) {
+            $gallery = Gallery::find($id);
+        }
+
         return view('gallery.form', compact('gallery'));
     }
+
+
 
 
 }

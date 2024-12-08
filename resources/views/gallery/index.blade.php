@@ -5,59 +5,48 @@
         <h1 class="text-center text-2xl font-bold text-green-600">Gallery</h1>
 
         <div class="flex justify-center space-x-4 mt-6">
-            <a href="{{ route('gallery', 'psychological') }}"
+            <a href="{{ route('gallery.index', ['category' => 'psychological']) }}"
                 class="py-2 px-4 border-2 rounded {{ $category === 'psychological' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
                 Pelatihan Psychological
             </a>
-            <a href="{{ route('gallery', 'eksternal') }}"
+            <a href="{{ route('gallery.index', ['category' => 'eksternal']) }}"
                 class="py-2 px-4 border-2 rounded {{ $category === 'eksternal' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
                 Pelatihan Eksternal
             </a>
-            <a href="{{ route('gallery', 'bonding') }}"
+            <a href="{{ route('gallery.index', ['category' => 'bonding']) }}"
                 class="py-2 px-4 border-2 rounded {{ $category === 'bonding' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
                 Bonding
             </a>
-            <a href="{{ route('gallery', 'internal') }}"
+            <a href="{{ route('gallery.index', ['category' => 'internal']) }}"
                 class="py-2 px-4 border-2 rounded {{ $category === 'internal' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
                 Pelatihan Internal
             </a>
         </div>
 
         <div class="grid grid-cols-3 gap-4 mt-10 w-full max-w-screen-lg ml-30">
-            <!-- Column 1 -->
+
             <div class="space-y-4">
-                <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image1.jpg" alt="Image 1" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image4.jpg" alt="Image 2" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image4.jpg" alt="Image 3" class="w-full h-full object-cover">
-                </div>
+                @foreach($galleries->take(3) as $gallery) <!-- Display 3 items for Column 1 -->
+                    <div class="bg-gray-300 rounded overflow-hidden h-40">
+                        <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-full object-cover">
+                    </div>
+                @endforeach
             </div>
 
-            <!-- Column 2 -->
             <div class="space-y-4">
-                <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image2.jpg" alt="Image 4" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image5.jpg" alt="Image 5" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-gray-300 rounded overflow-hidden h-40">
-                    <img src="path/to/image5.jpg" alt="Image 6" class="w-full h-full object-cover">
-                </div>
+                @foreach($galleries->slice(3, 3) as $gallery) <!-- Display 3 items for Column 2 -->
+                    <div class="bg-gray-300 rounded overflow-hidden h-40">
+                        <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-full object-cover">
+                    </div>
+                @endforeach
             </div>
 
-            <!-- Column 3 -->
             <div class="space-y-4">
-                <div class="bg-gray-300 rounded overflow-hidden h-80">
-                    <img src="path/to/image7.jpg" alt="Image 7" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-gray-300 rounded overflow-hidden h-80">
-                    <img src="path/to/image8.jpg" alt="Image 8" class="w-full h-full object-cover">
-                </div>
+                @foreach($galleries->slice(6, 2) as $gallery) <!-- Display 2 items for Column 3 -->
+                    <div class="bg-gray-300 rounded overflow-hidden h-80">
+                        <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-full object-cover">
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
