@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Gallery extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'image', 'category'];
+
+    protected $fillable = ['image', 'category'];
+
+    public static function getUniqueCategories()
+    {
+        return self::select('category')->distinct()->get();
+    }
 }

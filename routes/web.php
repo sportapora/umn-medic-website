@@ -21,16 +21,12 @@ Route::middleware('throttle:global')->group(function () {
     });
 
     Route::get('/contact-us-data', [ContactUsController::class, 'fetchContactUs'])->name('contactUs.data');
-    
+
     Route::prefix('gallery')->name('gallery.')->group(function () {
-        Route::get('/', [GalleryController::class, 'index'])->name('index');           
-        Route::get('/form/{id?}', [GalleryController::class, 'form'])->name('form');   
-        Route::post('/store', [GalleryController::class, 'store'])->name('store');     
-        Route::put('/update/{id}', [GalleryController::class, 'update'])->name('update'); 
-        Route::delete('/destroy/{id}', [GalleryController::class, 'destroy'])->name('destroy'); 
+        Route::get('/', [GalleryController::class, 'index'])->name('index'); // Public gallery page
     });
 
-    Route::middleware('auth')->prefix('gallery')->name('gallery.')->group(function () {
+    Route::middleware('auth')->prefix('gallery')->name('gallery.index')->group(function () {
         Route::get('/form/{id?}', [GalleryController::class, 'form'])->name('form');
         Route::post('/store', [GalleryController::class, 'store'])->name('store');
         Route::put('/update/{id}', [GalleryController::class, 'update'])->name('update');

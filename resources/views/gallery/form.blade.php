@@ -1,67 +1,63 @@
-@extends('layouts.app', ['title' => 'Gallery Management'])
-
+@extends('layouts.main', ['title' => 'Gallery Form'])
 
 @section('content')
-<div class="container mx-auto mt-10">
-    <h1 class="text-center text-2xl font-bold text-green-600">
-        {{ isset($gallery) ? 'Edit Gallery Item' : 'Gallery Management' }}
-    </h1>
+<div class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">Gallery Form</h1>
 
-    <div class="flex justify-center space-x-4 mt-6">
-        <a href="{{ route('gallery.index', ['category' => 'pelatihan psychological']) }}"
-            class="py-2 px-4 border-2 rounded {{ request('category') === 'pelatihan psychological' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
-            Pelatihan Psychological
-        </a>
-        <a href="{{ route('gallery.index', ['category' => 'pelatihan eksternal']) }}"
-            class="py-2 px-4 border-2 rounded {{ request('category') === 'pelatihan eksternal' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
-            Pelatihan Eksternal
-        </a>
-        <a href="{{ route('gallery.index', ['category' => 'bonding']) }}"
-            class="py-2 px-4 border-2 rounded {{ request('category') === 'bonding' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
-            Bonding
-        </a>
-        <a href="{{ route('gallery.index', ['category' => 'pelatihan internal']) }}"
-            class="py-2 px-4 border-2 rounded {{ request('category') === 'pelatihan internal' ? 'bg-green-500 text-white' : 'border-green-500 text-green-500 hover:bg-green-100' }}">
-            Pelatihan Internal
-        </a>
+    <!-- Category Filter Form -->
+    <div class="mb-6">
+        <h2 class="text-xl font-semibold mb-2">Filter by Category:</h2>
+        <form action="{{ route('gallery.form') }}" method="GET" class="flex flex-wrap mb-4">
+            <button type="submit" name="category" value="pelatihan psychological" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Pelatihan Psychological</button>
+            <button type="submit" name="category" value="pelatihan eksternal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Pelatihan Eksternal</button>
+            <button type="submit" name="category" value="bonding" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Bonding</button>
+            <button type="submit" name="category" value="pelatihan internal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Pelatihan Internal</button>
+            <button type="submit" name="category" value="" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Show All</button>
+        </form>
     </div>
 
-    <div class="grid grid-cols-3 gap-4 mt-10 w-full max-w-screen-lg mx-auto">
-        @forelse($galleries as $gallery)
-            <div class="relative bg-gray-300 rounded overflow-hidden h-60">
-                <img 
-                    src="{{ asset('storage/' . $gallery->image) }}" 
-                    alt="{{ $gallery->title }}" 
-                    class="w-full h-full object-cover"
-                >
-                <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
-                    <h5 class="font-bold">{{ $gallery->title }}</h5>
-                    <p>Category: {{ $gallery->category }}</p>
-                </div>
-                <div class="absolute top-0 right-0 flex space-x-1 p-2">
-                    <a href="{{ route('gallery.form', $gallery->id) }}"
-                       class="bg-yellow-500 text-white px-2 py-1 text-xs rounded hover:bg-yellow-600">Edit</a>
-                    <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" 
-                                class="bg-red-500 text-white px-2 py-1 text-xs rounded hover:bg-red-600"
-                                onclick="return confirm('Are you sure?')">
-                            Delete
-                        </button>
-                    </form>
-                </div>
+    <!-- Image Upload Form -->
+    <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data" class="mb-6">
+        @csrf
+
+        <div class="mb-4">
+            <label for="category" class="block text-sm font-medium text-gray-700">Select Category:</label>
+            <select name="category" id="category" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500">
+                <option value="">Select a category</option>
+                <option value="pelatihan psychological">Pelatihan Psychological</option>
+                <option value="pelatihan eksternal">Pelatihan Eksternal</option>
+                <option value="bonding">Bonding</option>
+                <option value="pelatihan internal">Pelatihan Internal</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label for="image" class="block text-sm font-medium text-gray-700">Upload Image:</label>
+            <input type="file" name="image" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500">
+        </div>
+
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Upload</button>
+    </form>
+
+    <!-- Display Uploaded Images -->
+    <h2 class="text-xl font-semibold mb-2">Uploaded Images</h2>
+    <div id="imageGallery">
+        @if($galleries->isEmpty())
+            <p class="text-gray-500">No images uploaded yet.</p>
+        @else
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                @foreach($galleries as $gallery)
+                    <div class="border border-gray-300 rounded-md p-2 text-center image-item" data-category="{{ $gallery->category }}">
+                        <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-auto mb-2 rounded">
+                        <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </form>
+                    </div>
+                @endforeach
             </div>
-        @empty
-            <p class="text-center text-gray-500 col-span-3">No images available for this category.</p>
-        @endforelse
-    </div>
-
-    <div class="mt-10 text-center">
-        <a href="{{ route('gallery.form') }}" 
-           class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-           Upload New Image
-        </a>
+        @endif
     </div>
 </div>
 @endsection

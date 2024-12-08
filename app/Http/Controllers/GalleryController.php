@@ -4,104 +4,105 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
-
     public function index(Request $request)
     {
-        $category = $request->category;
+        // Fetch unique categories
+        $categories = Gallery::getUniqueCategories();
 
-        if ($category) {
-            $galleries = Gallery::where('category', $category)->get();
-        } else {
-            $galleries = Gallery::all(); 
-        }
+        $category = $request->get('category');
+        $galleries = $category ? Gallery::where('category', $category)->get() : Gallery::all(); // Fetch all galleries if no category is selected
 
-        return view('gallery.index', compact('galleries', 'category'));
+        return view('gallery.index', compact('galleries', 'categories', 'category')); // Return to the public gallery view
     }
-
-
-
 
     public function create()
     {
-        return view('gallery.create');
+        // Fetch unique categories
+        $categories = Gallery::getUniqueCategories();
+
+        return view('gallery.form', [
+            'galleries' => Gallery::all(),
+            'categories' => $categories,
+            'category' => null,
+        ]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'category' => 'required',
             'image' => 'required|image',
+            'category' => 'required',
         ]);
 
         $imagePath = $request->file('image')->store('images', 'public');
 
         Gallery::create([
-            'title' => $request->title,
             'category' => $request->category,
             'image' => $imagePath,
         ]);
 
-        return redirect()->route('gallery.index');
+        return redirect()->route('gallery.form')->with('success', 'Gallery item created successfully.'); // Redirect to the form page
     }
 
-    public function edit($id)
+    public function edit(Gallery $gallery)
     {
-        $gallery = Gallery::findOrFail($id);
-        return view('gallery.edit', compact('gallery'));
+        $categories = Gallery::getUniqueCategories();
+
+        return view('gallery.edit', [
+            'gallery' => $gallery,
+            'categories' => $categories,
+            'category' => $gallery->category,
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Gallery $gallery)
     {
         $request->validate([
-            'title' => 'required',
             'category' => 'required',
             'image' => 'nullable|image',
         ]);
 
-        $gallery = Gallery::findOrFail($id);
-
         if ($request->hasFile('image')) {
+            Storage::delete($gallery->image);
             $imagePath = $request->file('image')->store('images', 'public');
             $gallery->image = $imagePath;
         }
 
-        $gallery->title = $request->title;
         $gallery->category = $request->category;
         $gallery->save();
 
-        return redirect()->route('gallery.index');
+        return redirect()->route('gallery.form')->with('success', 'Gallery item updated successfully.'); // Redirect to the form page
     }
 
-    public function destroy($id)
+    public function destroy(Gallery $gallery)
     {
-        $gallery = Gallery::findOrFail($id);
+        if ($gallery->image) {
+            Storage::delete($gallery->image);
+        }
+
         $gallery->delete();
 
-        return redirect()->route('gallery.index')->with('success', 'Gallery item deleted successfully!');
-    }
-
-    public function home()
-    {
-        return view('gallery.gallery_home');
+        return redirect()->route('gallery.form')->with('success', 'Gallery item deleted successfully!'); // Redirect to the form page
     }
 
     public function form($id = null)
     {
-        $gallery = null;
+        $gallery = $id ? Gallery::find($id) : null;
 
-
-        if ($id) {
-            $gallery = Gallery::find($id);
+        if ($id && !$gallery) {
+            abort(404, 'Gallery item not found');
         }
 
-        return view('gallery.form', compact('gallery'));
+        $categories = Gallery::getUniqueCategories();
+
+        return view('gallery.form', [
+            'gallery' => $gallery,
+            'galleries' => Gallery::all(),
+            'categories' => $categories,
+        ]);
     }
-
-
-
-
 }
