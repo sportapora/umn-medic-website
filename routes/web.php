@@ -30,12 +30,16 @@ Route::middleware('throttle:global')->group(function () {
         Route::delete('/destroy/{id}', [GalleryController::class, 'destroy'])->name('destroy'); 
     });
 
-
+    Route::middleware('auth')->prefix('gallery')->name('gallery.')->group(function () {
+        Route::get('/form/{id?}', [GalleryController::class, 'form'])->name('form');
+        Route::post('/store', [GalleryController::class, 'store'])->name('store');
+        Route::put('/update/{id}', [GalleryController::class, 'update'])->name('update');
+        Route::delete('/destroy/{id}', [GalleryController::class, 'destroy'])->name('destroy');
+    });
 
     Route::middleware('auth')->group(function () {
-        Route::resource('attendance', AttendanceController::class);
+        Route::resource('attendance', AttendanceController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::resource('shifts', ShiftController::class)->only(['index', 'store', 'update', 'destroy']);
-        Route::resource('gallery', GalleryController::class)->except(['show']);
     });
 
     Route::middleware(['auth', 'role:admin'])->group(function () {
