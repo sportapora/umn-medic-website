@@ -26,6 +26,8 @@ Route::middleware('throttle:global')->group(function () {
         return view('gallery_home');
     })->name('gallery.home');
 
+    Route::get('/gallery/form/{id?}', [GalleryController::class, 'form'])->name('gallery.form');
+
     Route::get('/gallery/{category?}', [GalleryController::class, 'index'])->name('gallery');
 
     Route::middleware('auth')->group(function () {

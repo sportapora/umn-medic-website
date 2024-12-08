@@ -79,7 +79,14 @@ class GalleryController extends Controller
 
     public function home()
     {
-        return view('gallery.gallery_home'); 
+        return view('gallery.gallery_home');
     }
+
+    public function form($id = null)
+    {
+        $gallery = $id ? Gallery::findOrFail($id) : null;
+        return view('gallery.form', compact('gallery'));
+    }
+
 
 }
