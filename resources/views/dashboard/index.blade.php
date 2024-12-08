@@ -16,7 +16,6 @@
         <div
             class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 2xl:gap-7.5"
         >
-            <!-- Card Item Start -->
             <div
                 class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default"
             >
@@ -44,9 +43,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Card Item End -->
 
-            <!-- Card Item Start -->
             <div
                 class="rounded-sm border border-stroke bg-white px-7.5 py-6 shadow-default"
             >
@@ -74,7 +71,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Card Item End -->
         </div>
 
         <div class="border border-stroke bg-white py-6 shadow-default mt-10 px-4">
