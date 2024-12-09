@@ -78,8 +78,10 @@ class GalleryController extends Controller
         return redirect()->route('gallery.form')->with('success', 'Gallery item updated successfully.'); // Redirect to the form page
     }
 
-    public function destroy(Gallery $gallery)
+    public function destroy($id)
     {
+        $gallery = Gallery::findOrFail($id);
+
         if ($gallery->image) {
             Storage::delete($gallery->image);
         }
