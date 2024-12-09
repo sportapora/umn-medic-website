@@ -91,20 +91,13 @@ class GalleryController extends Controller
         return redirect()->route('gallery.form')->with('success', 'Gallery item deleted successfully!'); // Redirect to the form page
     }
 
-    public function form($id = null)
+    public function form()
     {
-        $gallery = $id ? Gallery::find($id) : null;
 
-        if ($id && !$gallery) {
-            abort(404, 'Gallery item not found');
-        }
+        // $gallery = Gallery::filter(request()->get('category'))->get();
 
-        $categories = Gallery::getUniqueCategories();
+        $galleries = Gallery::all();
 
-        return view('gallery.form', [
-            'gallery' => $gallery,
-            'galleries' => Gallery::all(),
-            'categories' => $categories,
-        ]);
+        return view('gallery.form', compact('galleries'));
     }
 }

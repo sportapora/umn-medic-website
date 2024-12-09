@@ -15,4 +15,10 @@ class Gallery extends Model
     {
         return self::select('category')->distinct()->get();
     }
+    
+    public function scopeFilter($query, $category) {
+        if(request()->has('category')) {
+            return $query->where('category', $category);
+        }
+    }
 }
