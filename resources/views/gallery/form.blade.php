@@ -4,19 +4,17 @@
 <div class="container mx-auto p-6">
     <h1 class="text-2xl font-bold mb-4">Gallery Form</h1>
 
-    <!-- Category Filter Form -->
     <div class="mb-6">
         <h2 class="text-xl font-semibold mb-2">Filter by Category:</h2>
         <form action="{{ route('gallery.form') }}" method="GET" class="flex flex-wrap mb-4">
-            <button type="submit" name="category" value="pelatihan psychological" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Pelatihan Psychological</button>
-            <button type="submit" name="category" value="pelatihan eksternal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Pelatihan Eksternal</button>
-            <button type="submit" name="category" value="bonding" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Bonding</button>
-            <button type="submit" name="category" value="pelatihan internal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2">Pelatihan Internal</button>
-            <button type="submit" name="category" value="" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Show All</button>
+            <button type="submit" name="category" value="pelatihan psychological" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'pelatihan psychological' ? 'bg-blue-600' : '' }}">Pelatihan Psychological</button>
+            <button type="submit" name="category" value="pelatihan eksternal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'pelatihan eksternal' ? 'bg-blue-600' : '' }}">Pelatihan Eksternal</button>
+            <button type="submit" name="category" value="bonding" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'bonding' ? 'bg-blue-600' : '' }}">Bonding</button>
+            <button type="submit" name="category" value="pelatihan internal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'pelatihan internal' ? 'bg-blue-600' : '' }}">Pelatihan Internal</button>
+            <button type="submit" name="category" value="" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 {{ request('category') === '' ? 'bg-gray-600' : '' }}">Show All</button>
         </form>
     </div>
 
-    <!-- Image Upload Form -->
     <form action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data" class="mb-6">
         @csrf
 
@@ -39,7 +37,6 @@
         <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Upload</button>
     </form>
 
-    <!-- Display Uploaded Images -->
     <h2 class="text-xl font-semibold mb-2">Uploaded Images</h2>
     <div id="imageGallery">
         @if($galleries->isEmpty())
@@ -47,14 +44,16 @@
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 @foreach($galleries as $gallery)
-                    <div class="border border-gray-300 rounded-md p-2 text-center image-item" data-category="{{ $gallery->category }}">
-                        <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-auto mb-2 rounded">
-                        <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
-                        </form>
-                    </div>
+                    @if(request('category') === '' || $gallery->category === request('category'))
+                        <div class="border border-gray-300 rounded-md p-2 text-center image-item" data-category="{{ $gallery->category }}">
+                            <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-auto mb-2 rounded">
+                            <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                            </form>
+                        </div>
+                    @endif
                 @endforeach
             </div>
         @endif
