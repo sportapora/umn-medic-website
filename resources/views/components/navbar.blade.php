@@ -34,8 +34,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('gallery')}}"
-                       class="block py-2 px-3  {{request()->routeIs('gallery') ? 'bg-medic-primary md:text-medic-primary text-white' : 'text-gray-900 hover:text-medic-primary'}}  rounded md:bg-transparent  md:p-0">
+                    <a href="{{route('gallery.index')}}"
+                       class="block py-2 px-3  {{request()->routeIs('gallery.index') ? 'bg-medic-primary md:text-medic-primary text-white' : 'text-gray-900 hover:text-medic-primary'}}  rounded md:bg-transparent  md:p-0">
                         Gallery
                     </a>
                 </li>

@@ -1,5 +1,5 @@
 <footer class="bg-medic-secondary mt-20">
-    <div class="w-full max-w-screen-2xl mx-10 md:mx-16 lg:mx-auto p-4 py-6 lg:py-8">
+    <div class="max-w-screen-2xl mx-10 md:mx-16 lg:mx-auto p-4 py-6 lg:py-8">
         <div class="flex flex-col md:flex-row md:justify-between">
             <div class="flex flex-col gap-6 mb-6 md:mb-0">
                 <a href="/" class="flex items-center">
