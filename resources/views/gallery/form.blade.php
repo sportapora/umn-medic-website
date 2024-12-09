@@ -7,11 +7,11 @@
     <div class="mb-6">
         <h2 class="text-xl font-semibold mb-2">Filter by Category:</h2>
         <form action="{{ route('gallery.form') }}" method="GET" class="flex flex-wrap mb-4">
-            <button type="submit" name="category" value="pelatihan psychological" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'pelatihan psychological' ? 'bg-blue-600' : '' }}">Pelatihan Psychological</button>
-            <button type="submit" name="category" value="pelatihan eksternal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'pelatihan eksternal' ? 'bg-blue-600' : '' }}">Pelatihan Eksternal</button>
-            <button type="submit" name="category" value="bonding" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'bonding' ? 'bg-blue-600' : '' }}">Bonding</button>
-            <button type="submit" name="category" value="pelatihan internal" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mr-2 mb-2 {{ request('category') === 'pelatihan internal' ? 'bg-blue-600' : '' }}">Pelatihan Internal</button>
-            <button type="submit" name="category" value="" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 {{ request('category') === '' ? 'bg-gray-600' : '' }}">Show All</button>
+            <button type="submit" name="category" value="pelatihan psychological" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'pelatihan psychological' ? 'bg-medic-primary-dark' : '' }}">Pelatihan Psychological</button>
+            <button type="submit" name="category" value="pelatihan eksternal" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'pelatihan eksternal' ? 'bg-medic-primary-dark' : '' }}">Pelatihan Eksternal</button>
+            <button type="submit" name="category" value="bonding" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'bonding' ? 'bg-medic-primary-dark' : '' }}">Bonding</button>
+            <button type="submit" name="category" value="pelatihan internal" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'pelatihan internal' ? 'bg-medic-primary-dark' : '' }}">Pelatihan Internal</button>
+            <button type="submit" name="category" value="" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark {{ request('category') === '' ? 'bg-medic-primary-dark' : '' }}">Show All</button>
         </form>
     </div>
 
