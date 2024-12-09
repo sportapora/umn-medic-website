@@ -138,9 +138,10 @@
                     </li>
                     <li>
                         <a
-                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('attendance.index') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
+                            class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium hover:text-white duration-300 ease-in-out hover:bg-medic-primary {{request()->routeIs('attendance.*') ? 'bg-medic-primary text-white' : 'text-graydark'}}"
                             href="{{route('attendance.index')}}"
                         >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
                             Rekap Absensi
                         </a>
                     </li>
