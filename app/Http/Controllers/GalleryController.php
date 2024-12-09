@@ -14,6 +14,7 @@ class GalleryController extends Controller
         $categories = Gallery::getUniqueCategories();
 
         $category = $request->get('category');
+        
         $galleries = $category ? Gallery::where('category', $category)->get() : Gallery::all(); // Fetch all galleries if no category is selected
 
         return view('gallery.index', compact('galleries', 'categories', 'category')); // Return to the public gallery view

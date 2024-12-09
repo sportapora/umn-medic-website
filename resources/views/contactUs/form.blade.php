@@ -61,7 +61,7 @@
             </div>
             <div class="mb-4">
                 <label for="nama_organisasi" class="block font-medium">Nama Organisasi</label>
-                <input type="text" value="{{old('nama_organisasi')}}" placeholder="Masukkan nama orgnisasi"
+                <input type="text" value="{{old('nama_organisasi')}}" placeholder="Masukkan nama organisasi"
                        name="nama_organisasi" id="nama_organisasi"
                        class="w-full border-gray-300 rounded-lg focus:border-medic-primary">
 
