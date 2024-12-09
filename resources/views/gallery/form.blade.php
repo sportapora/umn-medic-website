@@ -21,11 +21,11 @@
         <div class="mb-4">
             <label for="category" class="block text-sm font-medium text-gray-700">Select Category:</label>
             <select name="category" id="category" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500">
-                <option value="">Select a category</option>
-                <option value="pelatihan psychological" {{ old('category') === 'pelatihan psychological' ? 'selected' : '' }}>Pelatihan Psychological</option>
-                <option value="pelatihan eksternal" {{ old('category') === 'pelatihan eksternal' ? 'selected' : '' }}>Pelatihan Eksternal</option>
-                <option value="bonding" {{ old('category') === 'bonding' ? 'selected' : '' }}>Bonding</option>
-                <option value="pelatihan internal" {{ old('category') === 'pelatihan internal' ? 'selected' : '' }}>Pelatihan Internal</option>
+                <option value="" de>Select a category</option>
+                <option value="psychological">Pelatihan Psychological</option>
+                <option value="eksternal">Pelatihan Eksternal</option>
+                <option value="bonding">Bonding</option>
+                <option value="internal">Pelatihan Internal</option>
             </select>
         </div>
 
