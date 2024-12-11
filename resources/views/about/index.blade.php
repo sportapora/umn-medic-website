@@ -25,7 +25,7 @@
     <div class="flex flex-col sm:flex-row custom-container gap-12 sm:gap-16">
         <div class="flex flex-col gap-12">
             <div class="flex flex-col lg:flex-row gap-12 sm:gap-16 items-center justify-center">
-                <img src="{{ asset('assets/images/filosofi/Photo.png') }}" alt="" class="mx-auto w-1/2 lg:w-auto">
+                <img src="{{ asset('assets/images/filosofi/Photo.png') }}" alt="" class="mx-auto w-1/4 lg:w-auto">
                 <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
                     <div class="text-medic-primary-dark text-xl">
                         Sisi Terbuka pada Pertemuan Tanda Plus
@@ -34,7 +34,7 @@
                         Melambangkan keterbukaan UMN Medical Center kepada siapapun.
                     </div>
                 </div>
-                <img src="{{ asset('assets/images/filosofi/Group 15.png') }}" alt="" class="mx-auto w-1/2 lg:w-auto">
+                <img src="{{ asset('assets/images/filosofi/Group 15.png') }}" alt="" class="mx-auto w-1/4 lg:w-auto">
                 <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
                     <div class="text-medic-primary-dark text-xl">
                         Logo Universitas Multimedia Nusantara
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="flex flex-col lg:flex-row gap-12 sm:gap-16 items-center justify-center">
-                <img src="{{ asset('assets/images/filosofi/Photo (1).png') }}" alt="" class="mx-auto w-1/2 lg:w-auto">
+                <img src="{{ asset('assets/images/filosofi/Photo (1).png') }}" alt="" class="mx-auto w-1/4 lg:w-auto">
                 <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
                     <div class="text-medic-primary-dark text-xl">
                         Warna Hijau
@@ -54,7 +54,7 @@
                         Melambangkan kesegaran dan keharmonisan.
                     </div>
                 </div>
-                <img src="{{ asset('assets/images/filosofi/Group 16.png') }}" alt="" class="mx-auto w-1/2 lg:w-auto">
+                <img src="{{ asset('assets/images/filosofi/Group 16.png') }}" alt="" class="mx-auto w-1/4 lg:w-auto">
                 <div class="flex flex-col justify-center w-full sm:w-1/2 text-center lg:text-left">
                     <div class="text-medic-primary-dark text-xl">
                         Tanda Plus Hijau
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <img src="{{ asset('assets/images/filosofi/Photo (2).png') }}" alt="" class="w-1/2 lg:w-auto">
+                <img src="{{ asset('assets/images/filosofi/Photo (2).png') }}" alt="" class="w-1/4 lg:w-auto">
                 <div class="flex flex-col justify-center ms-0 md:ms-4.5">
                     <div class="text-medic-primary-dark text-xl">
                     Bagian Melengkung pada Ujung Tanda Plus
@@ -106,8 +106,8 @@
     <div class="text-5xl text-medic-primary-dark font-bold mt-28 maskot-title" data-animate>
         Maskot
     </div>
-    <div class="mb-16 lg:w-auto maskot-image" data-animate>
-        <img src="{{ asset('assets/images/Medi Ical.png') }}" alt="">
+    <div class="mb-16 flex justify-center w-auto maskot-image" data-animate>
+        <img src="{{ asset('assets/images/Medi Ical.png') }}" alt="Medi Ical" class="w-3/4 lg:w-full">
     </div>
 </div>
 
