@@ -11,7 +11,7 @@
             <button type="submit" name="category" value="pelatihan eksternal" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'pelatihan eksternal' ? 'bg-medic-primary-dark' : '' }}">Pelatihan Eksternal</button>
             <button type="submit" name="category" value="bonding" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'bonding' ? 'bg-medic-primary-dark' : '' }}">Bonding</button>
             <button type="submit" name="category" value="pelatihan internal" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === 'pelatihan internal' ? 'bg-medic-primary-dark' : '' }}">Pelatihan Internal</button>
-            <button type="submit" name="category" value="" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark {{ request('category') === '' ? 'bg-medic-primary-dark' : '' }}">Show All</button>
+            <button type="submit" name="category" value="" class="bg-medic-primary text-white px-4 py-2 rounded hover:bg-medic-primary-dark mr-2 mb-2 {{ request('category') === '' ? 'bg-medic-primary-dark' : '' }}">Show All</button>
         </form>
     </div>
 

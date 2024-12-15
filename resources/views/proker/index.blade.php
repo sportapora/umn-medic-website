@@ -45,7 +45,6 @@
             justify-items: center;
         }
 
-
         .card.featured {
             width: 100%;
             max-width: 250px;
@@ -84,16 +83,16 @@
             <h2 class="routine-title">Program Kerja Rutin</h2>
             <div class="program-cards">
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 1.png" alt="Pelatihan">
+                    <img src="{{asset('assets/images/proker/Group 1.png')}}" alt="Pelatihan">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 2.png" alt="Piket">
+                    <img src="{{asset('assets/images/proker/Group 2.png')}}" alt="Piket">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 3.png" alt="Rapat">
+                    <img src="{{asset('assets/images/proker/Group 3.png')}}" alt="Rapat">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 4.png" alt="Penggunaan Jasa">
+                    <img src="{{asset('assets/images/proker/Group 4.png')}}" alt="Penggunaan Jasa">
                 </div>
             </div>
         </div>
@@ -102,22 +101,22 @@
             <h2 class="featured-title">Program Kerja Unggulan</h2>
             <div class="program-cards featured">
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 5.png" alt="Apresiasi">
+                    <img src="{{asset('assets/images/proker/Group 5.png')}}" alt="Apresiasi">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 6.png" alt="Identity Card">
+                    <img src="{{asset('assets/images/proker/Group 6.png')}}" alt="Identity Card">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 7.png" alt="Afkir">
+                    <img src="{{asset('assets/images/proker/Group 7.png')}}" alt="Afkir">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 8.png" alt="Cek Kesehatan">
+                    <img src="{{asset('assets/images/proker/Group 8.png')}}" alt="Cek Kesehatan">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 9.png" alt="Pelatihan Civitas">
+                    <img src="{{asset('assets/images/proker/Group 9.png')}}" alt="Pelatihan Civitas">
                 </div>
                 <div class="card featured">
-                    <img src="assets/images/proker/Group 10.png" alt="Bonding">
+                    <img src="{{asset('assets/images/proker/Group 10.png')}}" alt="Bonding">
                 </div>
             </div>
         </div>

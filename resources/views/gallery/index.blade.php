@@ -24,9 +24,8 @@
         </div>
 
         <div class="grid grid-cols-3 gap-4 mt-10 w-full max-w-screen-lg ml-30">
-
             <div class="space-y-4">
-                @foreach($galleries->take(3) as $gallery) 
+                @foreach($galleries->take(3) as $gallery)
                     <div class="bg-gray-300 rounded overflow-hidden h-40">
                         <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-full object-cover">
                     </div>
@@ -34,7 +33,7 @@
             </div>
 
             <div class="space-y-4">
-                @foreach($galleries->slice(3, 3) as $gallery) 
+                @foreach($galleries->slice(3, 3) as $gallery)
                     <div class="bg-gray-300 rounded overflow-hidden h-40">
                         <img src="{{ asset('storage/' . $gallery->image) }}" alt="{{ $gallery->title }}" class="w-full h-full object-cover">
                     </div>
