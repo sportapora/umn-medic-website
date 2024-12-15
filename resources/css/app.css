@@ -219,3 +219,30 @@ span.flatpickr-weekday,
 [x-cloak] {
     display: none !important;
 }
+
+/* Animation */
+
+[data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s ease-out;
+}
+
+.star-icon {
+    transform-origin: center;
+}
+
+.star-icon:hover {
+    animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation */

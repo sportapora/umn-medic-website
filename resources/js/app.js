@@ -2,11 +2,15 @@ import './bootstrap';
 import 'flowbite';
 import "../css/satoshi.css";
 import "../css/app.css";
-import { Calendar } from '@fullcalendar/core';
+import {Calendar} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import persist from "@alpinejs/persist";
 import Alpine from 'alpinejs';
+import gsap from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     `,
                 };
             },
-            events: function (fetchInfo, successCallback, failureCallback) {
+            events: function (fetchInfo, successCallback) {
                 fetch('/contact-us-data')
                     .then(response => response.json())
                     .then(events => {
@@ -40,10 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             if (event.status === 'Pending') {
                                 eventColor = 'gray';
-                            } else if (event.status === 'Approve') {
-                                eventColor = 'green';
-                            } else if (event.status === 'Decline') {
+                            } else if (event.status === 'On Progress') {
+                                eventColor = 'blue';
+                            } else if (event.status === 'Canceled') {
                                 eventColor = 'red';
+                            } else if (event.status === 'Completed') {
+                                eventColor = 'green';
                             }
 
                             return {
@@ -59,5 +65,197 @@ document.addEventListener('DOMContentLoaded', function () {
 
         calendar.render();
     }
+    // end fullcalendar
+
 });
-// end fullcalendar
+
+// Animasi
+document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk elemen dengan kelas .tagline
+    gsap.to(".tagline", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".tagline",
+            start: "top 70%",      
+            end: "top 30%",        
+            scrub: 1,              
+        }
+    });
+
+    // Animasi untuk elemen dengan kelas .quote
+    gsap.to(".quote", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.5,
+        scrollTrigger: {
+            trigger: ".quote",
+            start: "top 70%",
+            end: "top 30%",
+            scrub: 1,
+        }
+    });
+
+    gsap.to(".star-icon", {
+        rotation: 360,
+        repeat: -1,
+        duration: 10,
+        ease: "none",
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk judul 'Maskot'
+    gsap.to(".maskot-title", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".maskot-title",  
+            start: "top 80%",          
+            end: "top 30%",            
+            scrub: 1,                  
+            markers: false,            
+        }
+    });
+
+    // Animasi untuk gambar maskot
+    gsap.to(".maskot-image", {
+        opacity: 1,
+        scale: 1.1,             
+        rotation: 0,            
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".maskot-image",
+            start: "top 80%",          
+            end: "top 30%",            
+            scrub: 1,                  
+            markers: false,            
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Animasi untuk gambar logo
+    gsap.to(".about-logo", {
+        opacity: 1,
+        scale: 1.05,        
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-logo",
+            start: "top 70%",  
+            end: "top 30%",    
+            scrub: 1,          
+            markers: false,    
+        }
+    });
+
+    // Animasi untuk judul 'ABOUT UMN MEDICAL CENTER'
+    gsap.to(".about-title", {
+        opacity: 1,
+        y: 0,                  
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-title",
+            start: "top 80%",    
+            end: "top 30%",      
+            scrub: 1,            
+            markers: false,      
+        }
+    });
+
+    // Animasi untuk paragraf deskripsi
+    gsap.to(".about-description", {
+        opacity: 1,
+        y: 0,                    
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".about-description", 
+            start: "top 80%",              
+            end: "top 30%",                
+            scrub: 1,                      
+            markers: false,                
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Parallax Effect pada bagian VISI
+    gsap.fromTo(".visi-text", {
+        y: -100,
+        opacity: 0,
+    }, {
+        y: 0, 
+        opacity: 1,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".visi-text",
+            start: "top 80%",
+            end: "top 30%",
+            scrub: 1,
+            markers: false,
+        }
+    });
+
+    // Parallax Effect pada gambar VISI
+    gsap.fromTo(".visi-img", {
+        y: 100,
+    }, {
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".visi-img",
+            start: "top 80%", 
+            end: "top 30%", 
+            scrub: 1, 
+            markers: false,
+        }
+    });
+
+    // Parallax Effect pada bagian MISI
+    gsap.fromTo(".misi-text", {
+        y: -100, 
+        opacity: 0,
+    }, {
+        y: 0, 
+        opacity: 1,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".misi-text", 
+            start: "top 80%", 
+            end: "top 30%", 
+            scrub: 1, 
+            markers: false,
+        }
+    });
+
+    // Parallax Effect pada gambar MISI
+    gsap.fromTo(".misi-img", {
+        y: 150, 
+    }, {
+        y: 0, 
+        duration: 2.0,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".misi-img", 
+            start: "top 90%", 
+            end: "top 30%", 
+            scrub: 1, 
+            markers: false,
+        }
+    });
+});

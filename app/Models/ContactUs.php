@@ -16,18 +16,4 @@ class ContactUs extends Model
         'created_at',
         'updated_at'
     ];
-
-    public function getStatusAttribute($value)
-    {
-        switch ($value) {
-            case 1:
-                return 'Approve';
-            case 2:
-                return 'Decline';
-            case 0:
-                return 'Pending';
-            default:
-                return 'Pending';
-        }
-    }
 }
