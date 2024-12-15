@@ -293,7 +293,7 @@
                                 @endif
                             </td>
                             <td class="py-4 px-6">
-                                <a href="{{route('pengajuan-jasa.show', $data)}}"
+                                <a href="{{route('user.show')}}"
                                    class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded transition">
                                     Detail
                                 </a>

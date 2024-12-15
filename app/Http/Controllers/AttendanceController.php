@@ -68,12 +68,6 @@ class AttendanceController extends Controller
             return back()->withErrors(['shift_time' => 'Too early to submit attendance for this shift.']);
         }
 
-
-        $too_late = $current_time->greaterThan(Carbon::parse($shift->shift_end));
-        if($too_late){
-            return back()->withErrors(['shift_time' => 'You have already exceeded attendance time for this shift.']);
-        }
-
         $is_late = $current_time->subMinutes(15)->greaterThan($shift_time);
         $path = $request->file('photo')->storePublicly('absen', 'public');
 
