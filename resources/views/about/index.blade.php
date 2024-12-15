@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- About -->
-    <div class="flex flex-col items-center custom-container gap-12 pb-20 mx-[7%]">
+    <div class="flex flex-col items-center  gap-12 pb-20 mx-[7%]">
         <div class="text-medic-primary-dark font-bold text-5xl">
             About
         </div>
