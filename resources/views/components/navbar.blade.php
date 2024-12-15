@@ -1,5 +1,5 @@
 <nav class="bg-white">
-    <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-10 md:mx-16 lg:mx-auto p-4">
+    <div class="max-w-full flex flex-wrap items-center justify-between mx-10 md:mx-16 p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="{{ asset('assets/logos/medic-logo.png') }}" class="h-16" alt="UMN Medical Center Logo"/>
         </a>
