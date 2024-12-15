@@ -28,6 +28,7 @@ return new class extends Migration
             $table->time('waktu_selesai');
             $table->integer('jumlah_tim_medis')->nullable();
             $table->text('keterangan')->nullable();
+            $table->enum('status', ['Approved', 'Pending', 'Completed', 'On progress', 'Canceled'])->default('Pending');
             $table->timestamps();
         });
     }

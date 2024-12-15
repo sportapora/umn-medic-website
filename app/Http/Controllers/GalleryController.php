@@ -1,42 +1,103 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Gallery;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
-    public function index($category = 'psychological')
+    public function index(Request $request)
     {
-        $galleryImages = [
-            'psychological' => [
-                'Pelatihan Psychological Image 1',
-                'Pelatihan Psychological Image 2',
-                'Pelatihan Psychological Image 3',
-                'Pelatihan Psychological Image 4',
-                'Pelatihan Psychological Image 5',
-                'Pelatihan Psychological Image 6',
-            ],
-            'eksternal' => [
-                'Pelatihan Eksternal Image 1',
-                'Pelatihan Eksternal Image 2',
-                'Pelatihan Eksternal Image 3',
-                'Pelatihan Eksternal Image 4',
-            ],
-            'bonding' => [
-                'Bonding Image 1',
-                'Bonding Image 2',
-                'Bonding Image 3',
-            ],
-            'internal' => [
-                'Pelatihan Internal Image 1',
-                'Pelatihan Internal Image 2',
-                'Pelatihan Internal Image 3',
-                'Pelatihan Internal Image 4',
-            ],
-        ];
+        // Fetch unique categories
+        $categories = Gallery::getUniqueCategories();
 
-        $images = $galleryImages[$category] ?? $galleryImages['psychological'];
+        $category = $request->get('category');
+        $galleries = $category ? Gallery::where('category', $category)->get() : Gallery::all(); // Fetch all galleries if no category is selected
 
-        return view('gallery', compact('category', 'images'));
+        return view('gallery.index', compact('galleries', 'categories', 'category')); // Return to the public gallery view
+    }
+
+    public function create()
+    {
+        // Fetch unique categories
+        $categories = Gallery::getUniqueCategories();
+
+        return view('gallery.form', [
+            'galleries' => Gallery::all(),
+            'categories' => $categories,
+            'category' => null,
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image',
+            'category' => 'required',
+        ]);
+
+        $imagePath = $request->file('image')->store('images', 'public');
+
+        Gallery::create([
+            'category' => $request->category,
+            'image' => $imagePath,
+        ]);
+
+        return redirect()->route('gallery.form')->with('success', 'Gallery item created successfully.'); // Redirect to the form page
+    }
+
+    public function edit(Gallery $gallery)
+    {
+        $categories = Gallery::getUniqueCategories();
+
+        return view('gallery.edit', [
+            'gallery' => $gallery,
+            'categories' => $categories,
+            'category' => $gallery->category,
+        ]);
+    }
+
+    public function update(Request $request, Gallery $gallery)
+    {
+        $request->validate([
+            'category' => 'required',
+            'image' => 'nullable|image',
+        ]);
+
+        if ($request->hasFile('image')) {
+            Storage::delete($gallery->image);
+            $imagePath = $request->file('image')->store('images', 'public');
+            $gallery->image = $imagePath;
+        }
+
+        $gallery->category = $request->category;
+        $gallery->save();
+
+        return redirect()->route('gallery.form')->with('success', 'Gallery item updated successfully.'); // Redirect to the form page
+    }
+
+    public function destroy($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+
+        if ($gallery->image) {
+            Storage::delete($gallery->image);
+        }
+
+        $gallery->delete();
+
+        return redirect()->route('gallery.form')->with('success', 'Gallery item deleted successfully!'); // Redirect to the form page
+    }
+
+    public function form()
+    {
+
+        // $gallery = Gallery::filter(request()->get('category'))->get();
+
+        $galleries = Gallery::all();
+
+        return view('gallery.form', compact('galleries'));
     }
 }

@@ -42,6 +42,8 @@
     </div>
     <!-- ===== Content Area End ===== -->
 </div>
+
+@stack('script')
 </body>
 
 </html>

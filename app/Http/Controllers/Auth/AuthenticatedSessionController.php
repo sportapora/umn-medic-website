@@ -27,14 +27,19 @@ class AuthenticatedSessionController extends Controller
     {
         $user = User::where('email', $request->get('email'))->first();
 
+        if (!$user){
+            return back()->with('error','incorrect email or password');
+        }
+
         if ($user->is_verified) {
-
-
             $request->authenticate();
 
             $request->session()->regenerate();
 
-            return redirect()->intended(route('dashboard', absolute: false));
+            if ($user->hasRole('user'))
+                return redirect()->intended(route('home', absolute: false));
+            else
+                return redirect()->intended(route('dashboard'));
         } else {
             return back()->with('error', 'Anda belum terverifikasi oleh Admin!');
         }

@@ -12,8 +12,9 @@ class DashboardController extends Controller
     {
         $quotes = Http::get('https://api.quotable.io/random')->json();
         $contactUsCount = ContactUs::count();
-        $usersCount = User::role('user')->count();
+        $currentUser = User::role('user')->orderBy('created_at', 'desc')->limit(5)->get();
+        $currentPengajuan = ContactUs::orderBy('created_at', 'desc')->limit(5)->get();
 
-        return view('dashboard.index', compact('quotes', 'contactUsCount', 'usersCount'));
+        return view('dashboard.index', compact('quotes', 'contactUsCount', 'currentUser', 'currentPengajuan'));
     }
 }
