@@ -4,7 +4,10 @@
         <div class="bg-white shadow-md rounded-lg p-6">
             <h1 class="text-3xl font-extrabold text-green-600 mb-6 border-b pb-3">List of Unverified Users</h1>
             @if(session('success'))
-                <div class="bg-green-100 text-green-700 p-4 rounded mb-6">
+                <div x-data="{ show: true }"
+                     x-show="show"
+                     x-transition
+                     x-init="setTimeout(() => show = false, 2000)" class="bg-green-100 text-green-700 p-4 rounded mb-6">
                     {{ session('success') }}
                 </div>
             @endif

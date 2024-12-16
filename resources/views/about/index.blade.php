@@ -67,7 +67,7 @@
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <img src="{{ asset('assets/images/filosofi/Photo (2).png') }}" alt="" class="w-1/4 lg:w-auto">
                 <div class="flex flex-col justify-center ms-0 md:ms-4.5">
-                    <div class="text-medic-primary-dark text-xl">
+                    <div class="text-medic-primary-dark text-xl text-center lg:text-left">
                     Bagian Melengkung pada Ujung Tanda Plus
                     </div>
                     <div class="text-xl text-wrap text-center lg:text-left">
