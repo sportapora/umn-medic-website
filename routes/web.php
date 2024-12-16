@@ -4,7 +4,6 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PengajuanJasaController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\VerifyController;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +27,7 @@ Route::middleware('throttle:global')->group(function () {
         Route::put('/update/{id}', [GalleryController::class, 'update'])->name('update');
         Route::delete('/destroy/{id}', [GalleryController::class, 'destroy'])->name('destroy');
     });
-            
+
     Route::prefix('gallery')->name('gallery.')->group(function () {
         Route::get('/', [GalleryController::class, 'index'])->name('index'); // Public gallery page
     });
@@ -43,8 +42,6 @@ Route::middleware('throttle:global')->group(function () {
         Route::put('/verify/{user:id}', [VerifyController::class, 'verify'])->name('user.verify');
         Route::delete('/decline/{user:id}', [VerifyController::class, 'decline'])->name('user.decline');
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::resource('/pengajuan-jasa', PengajuanJasaController::class)->only('index', 'update', 'show');
     });
 
