@@ -27,8 +27,6 @@ class AttendanceController extends Controller
 
             $attendance->shift->shift_start = Carbon::parse($attendance->shift_start)->format('H:i');
             $attendance->absen_time = Carbon::parse($attendance->created_at)->format('H:i');
-
-            $attendance->photo_url = Storage::url($attendance->photo);
         }
         return view('attendance.index', ['attendances' => $attendances, 'date'=>$date]);
     }
@@ -69,7 +67,7 @@ class AttendanceController extends Controller
         }
 
         $is_late = $current_time->subMinutes(15)->greaterThan($shift_time);
-        $path = $request->file('photo')->storePublicly('absen', 'public');
+        $path = $request->file('photo')->store('absen', 'public');
 
         $attendance = new Attendance();
         $attendance->user_id = $request->user_id;
@@ -83,35 +81,12 @@ class AttendanceController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         $attendance = Attendance::find($id);
+        Storage::delete($attendance->photo);
         $attendance->delete();
         return redirect('/attendance');
     }
