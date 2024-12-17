@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Shift;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,11 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Admin Medic',
             'email' => 'admin@medic.umn.ac.id',
             'password' => bcrypt('UMNmedic'),
             'nim' => '000000000',
+            'is_verified' => TRUE,
+        ]);
+
+        $user = User::factory()->create([
+            'name' => 'User',
+            'email' => 'user@student.umn.ac.id',
+            'password' => bcrypt('password'),
+            'nim' => '000000001',
             'is_verified' => TRUE,
         ]);
 
@@ -32,7 +41,13 @@ class DatabaseSeeder extends Seeder
             'guard_name' => 'web'
         ]);
 
-        $user->assignRole('admin');
+        Shift::create([
+            'shift_start' => '09:00:00',
+            'shift_end' => '11:00:00',
+        ]);
+
+        $admin->assignRole('admin');
+        $user->assignRole('user');
 
         $this->call(ContactUsSeeder::class);
     }
